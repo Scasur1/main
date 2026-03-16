@@ -65,29 +65,59 @@ async function fetchAllDatabases(notionToken) {
 }
 
 async function findMainConfigPage(notionToken, systemSettingsDbId) {
-  const res = await fetch(`https://api.notion.com/v1/databases/${systemSettingsDbId}/query`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${notionToken}`,
-      'Notion-Version': '2026-03-11',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      filter: { property: 'Config Key', title: { equals: 'Main Config' } },
-    }),
-  });
+  // /v1/databases/{id}/query endpoint is not valid in Notion API 2026-03-11.
+  // Use /v1/search instead: search for pages named "Main Config" and find
+  // the one whose parent database matches systemSettingsDbId.
+  const normalize = (id) => (id || '').replace(/-/g, '').toLowerCase();
+  const targetDbId = normalize(systemSettingsDbId);
 
-  if (!res.ok) {
-    const errBody = await res.text().catch(() => '');
-    console.error(`[Notion /v1/databases/query] HTTP ${res.status}:`, errBody);
-    throw { status: 500, message: `Notion API error querying System Settings (HTTP ${res.status}): ${errBody}` };
-  }
+  let cursor = undefined;
+  do {
+    const body = { query: 'Main Config', filter: { value: 'page', property: 'object' } };
+    if (cursor) body.start_cursor = cursor;
 
-  const data = await res.json();
-  if (!data.results?.length) {
-    throw { status: 404, message: "Could not find 'Main Config' page in System Settings database." };
-  }
-  return data.results[0].id;
+    const res = await fetch('https://api.notion.com/v1/search', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${notionToken}`,
+        'Notion-Version': '2026-03-11',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      const errBody = await res.text().catch(() => '');
+      console.error(`[Notion search Main Config] HTTP ${res.status}:`, errBody);
+      if (res.status === 401) throw { status: 401, message: 'Invalid Notion token. Please check your Integration Token.' };
+      throw { status: 500, message: `Notion API error searching Main Config (HTTP ${res.status}): ${errBody}` };
+    }
+
+    const data = await res.json();
+    console.log(`[findMainConfigPage] searching, got ${data.results.length} pages`);
+
+    for (const page of data.results) {
+      // Check parent database
+      const parentId = normalize(page.parent?.database_id || page.parent?.data_source_id || '');
+      if (parentId !== targetDbId) continue;
+
+      // Check title — try common property names
+      const titleProp = page.properties?.title
+        || page.properties?.Name
+        || page.properties?.['Config Key'];
+      const title = (titleProp?.title?.[0]?.plain_text || '').trim();
+
+      console.log(`[findMainConfigPage] candidate: title="${title}" parentId=${parentId}`);
+      if (title === 'Main Config') {
+        console.log('[findMainConfigPage] Found page id:', page.id);
+        return page.id;
+      }
+    }
+
+    cursor = data.has_more ? data.next_cursor : undefined;
+  } while (cursor);
+
+  throw { status: 404, message: "Could not find 'Main Config' page in System Settings database." };
 }
 
 export async function POST(request) {
