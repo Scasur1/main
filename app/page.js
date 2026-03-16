@@ -27,6 +27,7 @@ export default function Home() {
   const [step, setStep] = useState(0);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [debugDbs, setDebugDbs] = useState(null);
 
   const allSelected = selected.length === BLUEPRINTS.length;
 
@@ -69,6 +70,7 @@ export default function Home() {
     e.preventDefault();
     setError(null);
     setResult(null);
+    setDebugDbs(null);
     setStep(0);
 
     if (!token.startsWith('ntn_') && !token.startsWith('secret_')) {
@@ -104,6 +106,7 @@ export default function Home() {
 
       if (!res.ok) {
         setError(data.error || 'An unexpected error occurred.');
+        if (data.debug_found_databases) setDebugDbs(data.debug_found_databases);
         setLoading(false);
         return;
       }
@@ -225,6 +228,22 @@ export default function Home() {
           <p className="text-red-500/70 text-xs mt-1">
             Make sure your Notion Integration Token is correct and that you have shared all 4 databases with the integration.
           </p>
+          {debugDbs && debugDbs.length > 0 && (
+            <div className="mt-2 pt-2 border-t border-red-800">
+              <p className="text-red-400/80 text-xs font-medium mb-1">Databases found in your workspace:</p>
+              <ul className="space-y-0.5">
+                {debugDbs.map(name => (
+                  <li key={name} className="text-red-300/70 text-xs font-mono">• {name}</li>
+                ))}
+              </ul>
+              <p className="text-red-500/60 text-xs mt-1">Expected: "Clients", "System Settings", "System Logs", "Dashboard KPIs"</p>
+            </div>
+          )}
+          {debugDbs && debugDbs.length === 0 && (
+            <p className="text-red-400/80 text-xs mt-2 pt-2 border-t border-red-800">
+              No databases were found. Make sure you have shared the databases with this integration in Notion.
+            </p>
+          )}
         </div>
       )}
 
