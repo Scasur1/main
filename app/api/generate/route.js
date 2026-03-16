@@ -85,20 +85,32 @@ export async function POST(request) {
     const { notionToken, selectedBlueprints } = await request.json();
 
     // Adım 1 — Token validasyonu
-    if (!notionToken || !notionToken.startsWith('ntn_')) {
+    // ntn_ (yeni format) ve secret_ (eski format) ikisi de geçerli
+    if (!notionToken || (!notionToken.startsWith('ntn_') && !notionToken.startsWith('secret_'))) {
       return NextResponse.json(
-        { error: 'Please enter a valid Notion Integration Token (starts with ntn_)' },
+        { error: 'Please enter a valid Notion Integration Token (starts with ntn_ or secret_)' },
         { status: 400 }
       );
     }
 
-    const meRes = await fetch('https://api.notion.com/v1/users/me', {
+    // /v1/users/me bazı token tipleriyle güvenilir çalışmıyor;
+    // bunun yerine search endpoint'ini kullanarak token'ı doğrula.
+    const validateRes = await fetch('https://api.notion.com/v1/search', {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${notionToken}`,
         'Notion-Version': '2022-06-01',
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({ query: '', page_size: 1 }),
     });
-    if (!meRes.ok) {
+    if (!validateRes.ok) {
+      if (validateRes.status === 429) {
+        return NextResponse.json(
+          { error: 'Notion API rate limit. Please wait a moment and try again.' },
+          { status: 429 }
+        );
+      }
       return NextResponse.json(
         { error: 'Invalid Notion token. Please check your Integration Token.' },
         { status: 401 }

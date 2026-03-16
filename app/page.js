@@ -71,8 +71,8 @@ export default function Home() {
     setResult(null);
     setStep(0);
 
-    if (!token.startsWith('ntn_')) {
-      setError('Please enter a valid Notion Integration Token (starts with ntn_)');
+    if (!token.startsWith('ntn_') && !token.startsWith('secret_')) {
+      setError('Please enter a valid Notion Integration Token (starts with ntn_ or secret_)');
       return;
     }
 
@@ -138,7 +138,7 @@ export default function Home() {
             <input
               id="token"
               type="password"
-              placeholder="ntn_..."
+              placeholder="ntn_... or secret_..."
               value={token}
               onChange={e => setToken(e.target.value)}
               className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
