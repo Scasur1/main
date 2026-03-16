@@ -93,31 +93,7 @@ export async function POST(request) {
       );
     }
 
-    // /v1/users/me bazı token tipleriyle güvenilir çalışmıyor;
-    // bunun yerine search endpoint'ini kullanarak token'ı doğrula.
-    const validateRes = await fetch('https://api.notion.com/v1/search', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${notionToken}`,
-        'Notion-Version': '2022-06-01',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query: '', page_size: 1 }),
-    });
-    if (!validateRes.ok) {
-      if (validateRes.status === 429) {
-        return NextResponse.json(
-          { error: 'Notion API rate limit. Please wait a moment and try again.' },
-          { status: 429 }
-        );
-      }
-      return NextResponse.json(
-        { error: 'Invalid Notion token. Please check your Integration Token.' },
-        { status: 401 }
-      );
-    }
-
-    // Adım 2 — Veritabanlarını bul
+    // Adım 2 — Veritabanlarını bul (token geçersizse fetchAllDatabases zaten 401 fırlatır)
     const requiredDatabases = [
       { name: 'Clients',          key: 'clients' },
       { name: 'System Settings',  key: 'systemSettings' },
@@ -126,6 +102,8 @@ export async function POST(request) {
     ];
 
     const allDbs = await fetchAllDatabases(notionToken);
+    // allDbs: { "clients": id, "system settings": id, ... } — lowercase key'ler
+    const foundDbNames = Object.keys(allDbs); // debug için
     const newIds = {};
     const foundNames = [];
 
@@ -133,7 +111,10 @@ export async function POST(request) {
       const id = allDbs[name.toLowerCase()];
       if (!id) {
         return NextResponse.json(
-          { error: `Could not find database: ${name}. Make sure you shared it with your integration.` },
+          {
+            error: `Could not find database: "${name}". Make sure you shared it with your integration.`,
+            debug_found_databases: foundDbNames,
+          },
           { status: 404 }
         );
       }
