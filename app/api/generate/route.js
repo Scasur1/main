@@ -28,7 +28,7 @@ async function fetchAllDatabases(notionToken) {
   let cursor = undefined;
 
   do {
-    const body = { filter: { value: 'database', property: 'object' } };
+    const body = { filter: { value: 'data_source', property: 'object' } };
     if (cursor) body.start_cursor = cursor;
 
     const res = await fetch('https://api.notion.com/v1/search', {
@@ -50,8 +50,12 @@ async function fetchAllDatabases(notionToken) {
     }
 
     const data = await res.json();
+    if (data.results?.length > 0) {
+      console.log('[Notion search] first result sample:', JSON.stringify(data.results[0]).slice(0, 300));
+    }
     for (const db of data.results) {
-      const title = db.title?.[0]?.plain_text?.trim();
+      // title yapısı: db.title[0].plain_text veya db.properties?.title
+      const title = (db.title?.[0]?.plain_text ?? db.name ?? '').trim();
       if (title) databases[title.toLowerCase()] = db.id;
     }
     cursor = data.has_more ? data.next_cursor : undefined;
