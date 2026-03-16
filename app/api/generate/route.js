@@ -35,16 +35,18 @@ async function fetchAllDatabases(notionToken) {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${notionToken}`,
-        'Notion-Version': '2022-06-01',
+        'Notion-Version': '2026-03-11',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     });
 
     if (!res.ok) {
+      const errBody = await res.text().catch(() => '');
+      console.error(`[Notion /v1/search] HTTP ${res.status}:`, errBody);
       if (res.status === 401) throw { status: 401, message: 'Invalid Notion token. Please check your Integration Token.' };
       if (res.status === 429) throw { status: 429, message: 'Notion API rate limit. Please wait a moment and try again.' };
-      throw { status: 500, message: 'An unexpected error occurred. Please try again.' };
+      throw { status: 500, message: `Notion API error (HTTP ${res.status}): ${errBody}` };
     }
 
     const data = await res.json();
@@ -63,7 +65,7 @@ async function findMainConfigPage(notionToken, systemSettingsDbId) {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${notionToken}`,
-      'Notion-Version': '2022-06-01',
+      'Notion-Version': '2026-03-11',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -71,7 +73,11 @@ async function findMainConfigPage(notionToken, systemSettingsDbId) {
     }),
   });
 
-  if (!res.ok) throw { status: 500, message: 'An unexpected error occurred. Please try again.' };
+  if (!res.ok) {
+    const errBody = await res.text().catch(() => '');
+    console.error(`[Notion /v1/databases/query] HTTP ${res.status}:`, errBody);
+    throw { status: 500, message: `Notion API error querying System Settings (HTTP ${res.status}): ${errBody}` };
+  }
 
   const data = await res.json();
   if (!data.results?.length) {
@@ -158,7 +164,8 @@ export async function POST(request) {
     if (err.status && err.message) {
       return NextResponse.json({ error: err.message }, { status: err.status });
     }
-    console.error(err);
-    return NextResponse.json({ error: 'An unexpected error occurred. Please try again.' }, { status: 500 });
+    const msg = err?.message || String(err);
+    console.error('[/api/generate] Unexpected error:', err);
+    return NextResponse.json({ error: `Server error: ${msg}` }, { status: 500 });
   }
 }
