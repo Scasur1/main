@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "convert": "node lib/convert-blueprints.js"
+    "convert": "node lib/convert-blueprints.js",
+    "pages:build": "npx @cloudflare/next-on-pages@1",
+    "preview": "npm run pages:build && wrangler pages dev .vercel/output/static"
   },
   "dependencies": {
     "next": "^14.0.0",
@@ -18,6 +20,7 @@
   "devDependencies": {
     "tailwindcss": "^3.4.0",
     "postcss": "^8.4.0",
-    "autoprefixer": "^10.4.0"
+    "autoprefixer": "^10.4.0",
+    "@cloudflare/next-on-pages": "^1"
   }
 }

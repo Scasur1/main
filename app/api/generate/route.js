@@ -1,9 +1,16 @@
-import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+export const runtime = 'edge';
 
-// Blueprints klasörü: blueprints-converted/ (Database Legacy moduna çevrilmiş)
-const BLUEPRINTS_DIR = path.join(process.cwd(), 'blueprints-converted');
+import { NextResponse } from 'next/server';
+
+import M0 from '../../../blueprints-converted/M0.json';
+import M1 from '../../../blueprints-converted/M1.json';
+import M2 from '../../../blueprints-converted/M2.json';
+import M3 from '../../../blueprints-converted/M3.json';
+import M4 from '../../../blueprints-converted/M4.json';
+import M5 from '../../../blueprints-converted/M5.json';
+import M6 from '../../../blueprints-converted/M6.json';
+
+const BLUEPRINTS = { M0, M1, M2, M3, M4, M5, M6 };
 
 const OLD_IDS = {
   systemSettings: '314869cd-9cc1-803d-bb6f-000b22fb720c',
@@ -23,79 +30,68 @@ function personalize(masterJsonString, newIds) {
   return result;
 }
 
-async function fetchAllDatabases(notionToken) {
+async function notionPost(token, endpoint, body) {
+  const res = await fetch(`https://api.notion.com${endpoint}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Notion-Version': '2026-03-11',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    console.error(`[Notion ${endpoint}] HTTP ${res.status}:`, text);
+    if (res.status === 401) throw { status: 401, message: 'Invalid Notion token. Please check your Integration Token.' };
+    if (res.status === 429) throw { status: 429, message: 'Notion API rate limit. Please wait a moment and try again.' };
+    throw { status: 500, message: `Notion API error (HTTP ${res.status}): ${text}` };
+  }
+  return res.json();
+}
+
+async function fetchAllDatabases(token) {
   const databases = {};
   let cursor = undefined;
-
   do {
     const body = { filter: { value: 'data_source', property: 'object' } };
     if (cursor) body.start_cursor = cursor;
-
-    const res = await fetch('https://api.notion.com/v1/search', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${notionToken}`,
-        'Notion-Version': '2026-03-11',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    if (!res.ok) {
-      const errBody = await res.text().catch(() => '');
-      console.error(`[Notion /v1/search] HTTP ${res.status}:`, errBody);
-      if (res.status === 401) throw { status: 401, message: 'Invalid Notion token. Please check your Integration Token.' };
-      if (res.status === 429) throw { status: 429, message: 'Notion API rate limit. Please wait a moment and try again.' };
-      throw { status: 500, message: `Notion API error (HTTP ${res.status}): ${errBody}` };
-    }
-
-    const data = await res.json();
-    if (data.results?.length > 0) {
-      console.log('[Notion search] first result sample:', JSON.stringify(data.results[0]).slice(0, 300));
-    }
+    const data = await notionPost(token, '/v1/search', body);
     for (const db of data.results) {
-      // title yapısı: db.title[0].plain_text veya db.properties?.title
       const title = (db.title?.[0]?.plain_text ?? db.name ?? '').trim();
       if (title) databases[title.toLowerCase()] = db.id;
     }
     cursor = data.has_more ? data.next_cursor : undefined;
   } while (cursor);
-
   return databases;
 }
 
-async function findMainConfigPage(notionToken, systemSettingsDbId) {
-  const res = await fetch(`https://api.notion.com/v1/databases/${systemSettingsDbId}/query`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${notionToken}`,
-      'Notion-Version': '2026-03-11',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      filter: { property: 'Config Key', title: { equals: 'Main Config' } },
-    }),
-  });
-
-  if (!res.ok) {
-    const errBody = await res.text().catch(() => '');
-    console.error(`[Notion /v1/databases/query] HTTP ${res.status}:`, errBody);
-    throw { status: 500, message: `Notion API error querying System Settings (HTTP ${res.status}): ${errBody}` };
-  }
-
-  const data = await res.json();
-  if (!data.results?.length) {
-    throw { status: 404, message: "Could not find 'Main Config' page in System Settings database." };
-  }
-  return data.results[0].id;
+async function findMainConfigPage(token, systemSettingsDbId) {
+  const norm = (id) => (id || '').replace(/-/g, '').toLowerCase();
+  const targetId = norm(systemSettingsDbId);
+  let cursor = undefined;
+  do {
+    const body = { query: 'Main Config', filter: { value: 'page', property: 'object' } };
+    if (cursor) body.start_cursor = cursor;
+    const data = await notionPost(token, '/v1/search', body);
+    for (const page of data.results) {
+      const parentId = norm(page.parent?.database_id || page.parent?.data_source_id || '');
+      if (parentId !== targetId) continue;
+      const titleProp = page.properties?.title
+        || page.properties?.Name
+        || page.properties?.['Config Key'];
+      const title = (titleProp?.title?.[0]?.plain_text || '').trim();
+      if (title === 'Main Config') return page.id;
+    }
+    cursor = data.has_more ? data.next_cursor : undefined;
+  } while (cursor);
+  throw { status: 404, message: "Could not find 'Main Config' page in System Settings database." };
 }
 
 export async function POST(request) {
   try {
     const { notionToken, selectedBlueprints } = await request.json();
 
-    // Adım 1 — Token validasyonu
-    // ntn_ (yeni format) ve secret_ (eski format) ikisi de geçerli
     if (!notionToken || (!notionToken.startsWith('ntn_') && !notionToken.startsWith('secret_'))) {
       return NextResponse.json(
         { error: 'Please enter a valid Notion Integration Token (starts with ntn_ or secret_)' },
@@ -103,17 +99,14 @@ export async function POST(request) {
       );
     }
 
-    // Adım 2 — Veritabanlarını bul (token geçersizse fetchAllDatabases zaten 401 fırlatır)
     const requiredDatabases = [
-      { name: 'Clients',          key: 'clients' },
-      { name: 'System Settings',  key: 'systemSettings' },
-      { name: 'System Logs',      key: 'systemLogs' },
-      { name: 'Dashboard KPIs',   key: 'dashboardKpis' },
+      { name: 'Clients',         key: 'clients' },
+      { name: 'System Settings', key: 'systemSettings' },
+      { name: 'System Logs',     key: 'systemLogs' },
+      { name: 'Dashboard KPIs',  key: 'dashboardKpis' },
     ];
 
     const allDbs = await fetchAllDatabases(notionToken);
-    // allDbs: { "clients": id, "system settings": id, ... } — lowercase key'ler
-    const foundDbNames = Object.keys(allDbs); // debug için
     const newIds = {};
     const foundNames = [];
 
@@ -123,7 +116,7 @@ export async function POST(request) {
         return NextResponse.json(
           {
             error: `Could not find database: "${name}". Make sure you shared it with your integration.`,
-            debug_found_databases: foundDbNames,
+            debug_found_databases: Object.keys(allDbs),
           },
           { status: 404 }
         );
@@ -132,44 +125,32 @@ export async function POST(request) {
       foundNames.push(name);
     }
 
-    // Adım 3 — Main Config Page ID
-    const mainConfigPageId = await findMainConfigPage(notionToken, newIds.systemSettings);
-    newIds.mainConfigPage = mainConfigPageId;
+    newIds.mainConfigPage = await findMainConfigPage(notionToken, newIds.systemSettings);
 
-    // Adım 4 — JSON String Replace
     const blueprints = {};
     let totalReplacements = 0;
-    const blueprintIds = selectedBlueprints || ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6'];
+    const ids = selectedBlueprints?.length ? selectedBlueprints : ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6'];
 
-    for (const id of blueprintIds) {
-      const filePath = path.join(BLUEPRINTS_DIR, `${id}.json`);
-      const masterString = fs.readFileSync(filePath, 'utf-8');
+    for (const id of ids) {
+      if (!BLUEPRINTS[id]) throw { status: 400, message: `Unknown blueprint: ${id}` };
+      const masterString = JSON.stringify(BLUEPRINTS[id]);
       const personalized = personalize(masterString, newIds);
       blueprints[id] = personalized;
-
-      // Yaklaşık replacement sayısı
       for (const oldId of Object.values(OLD_IDS)) {
-        const count = (masterString.match(new RegExp(oldId, 'g')) || []).length;
-        totalReplacements += count;
+        totalReplacements += (masterString.match(new RegExp(oldId, 'g')) || []).length;
       }
     }
 
-    // Adım 5 — Response
     return NextResponse.json({
       success: true,
       blueprints,
-      summary: {
-        databasesFound: foundNames,
-        mainConfigPageFound: true,
-        totalReplacements,
-      },
+      summary: { databasesFound: foundNames, mainConfigPageFound: true, totalReplacements },
     });
   } catch (err) {
     if (err.status && err.message) {
       return NextResponse.json({ error: err.message }, { status: err.status });
     }
-    const msg = err?.message || String(err);
     console.error('[/api/generate] Unexpected error:', err);
-    return NextResponse.json({ error: `Server error: ${msg}` }, { status: 500 });
+    return NextResponse.json({ error: `Server error: ${err?.message || String(err)}` }, { status: 500 });
   }
 }
