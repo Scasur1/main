@@ -35,7 +35,7 @@ async function notionPost(token, endpoint, body) {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
-      'Notion-Version': '2026-03-11',
+      'Notion-Version': '2022-06-28',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
@@ -54,7 +54,7 @@ async function fetchAllDatabases(token) {
   const databases = {};
   let cursor = undefined;
   do {
-    const body = { filter: { value: 'data_source', property: 'object' } };
+    const body = { filter: { value: 'database', property: 'object' } };
     if (cursor) body.start_cursor = cursor;
     const data = await notionPost(token, '/v1/search', body);
     for (const db of data.results) {
