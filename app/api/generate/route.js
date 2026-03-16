@@ -35,7 +35,7 @@ async function fetchAllDatabases(notionToken) {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${notionToken}`,
-        'Notion-Version': '2022-06-01',
+        'Notion-Version': '2026-03-11',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
@@ -65,7 +65,7 @@ async function findMainConfigPage(notionToken, systemSettingsDbId) {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${notionToken}`,
-      'Notion-Version': '2022-06-01',
+      'Notion-Version': '2026-03-11',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
