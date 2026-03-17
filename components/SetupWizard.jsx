@@ -18,6 +18,8 @@ import {
   UserPlus,
   Globe,
   Eye,
+  ExternalLink,
+  Sliders,
 } from 'lucide-react';
 import Confetti from 'react-confetti';
 import ProgressBar from './ProgressBar';
@@ -139,7 +141,7 @@ function StepPrepare({ checks, toggleCheck }) {
         title="Prepare Your Workspace"
         description="Let's set up the backbone of your system. You don't need any technical skills — just follow these quick steps."
       />
-      <div className="space-y-2.5">
+      <div className="space-y-5">
         {items.map((item, i) => (
           <ChecklistItem
             key={i}
@@ -161,24 +163,54 @@ function StepPrepare({ checks, toggleCheck }) {
 function StepApiKey({ checks, toggleCheck }) {
   const items = [
     {
-      icon: KeyRound,
-      title: 'Create Integration',
+      icon: ExternalLink,
+      title: 'Create New Integration',
       description: (
-        <>Go to <b>Notion Integrations</b>. Click <b>New integration</b>, name it <b>&apos;Revenue Recovery Engine&apos;</b>, and save.</>
+        <>
+          Click{' '}
+          <a
+            href="https://www.notion.so/profile/integrations"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline font-medium"
+            onClick={(e) => e.stopPropagation()}
+          >
+            here
+          </a>{' '}
+          to open your Notion Integrations. Click the <b>+ Create a new integration</b> block. Name it <b>&apos;Revenue Recovery Engine&apos;</b> and click <b>Create</b>.
+        </>
+      ),
+    },
+    {
+      icon: Sliders,
+      title: 'Configure Capabilities',
+      description: (
+        <>
+          On the success popup, click <b>Configure integration settings</b> and scroll down to <b>Capabilities</b>.
+          <ul className="mt-1.5 ml-4 space-y-0.5 list-disc text-[13px]">
+            <li>Ensure <b>Read</b>, <b>Update</b>, and <b>Insert</b> content are checked.</li>
+            <li>Under User Capabilities, select <b>Read user information including email addresses</b>.</li>
+            <li>Click <b>Save</b>.</li>
+          </ul>
+        </>
       ),
     },
     {
       icon: Eye,
-      title: 'Copy the Secret',
+      title: 'Copy the Secret Key',
       description: (
-        <>Scroll to <b>&apos;Internal integration secret&apos;</b>, click <b>Show</b>, and <b>Copy</b> this long password.</>
+        <>
+          Scroll up to the <b>Internal integration secret</b> section. Click <b>Show</b>, and <b>Copy</b> this long password. <em className="text-gray-400">Keep it safe; we will paste it in the next step.</em>
+        </>
       ),
     },
     {
       icon: Link2,
       title: 'Authorize the Template',
       description: (
-        <>Go back to your <b>Notion Dashboard</b>. Click the <b>&apos;...&apos;</b> in the top right → <b>Connections</b> → Search for <b>&apos;Revenue Recovery Engine&apos;</b> and click <b>Confirm</b>.</>
+        <>
+          Go back to your <b>Notion Dashboard</b>. Click the <b>&apos;...&apos;</b> menu in the top right → <b>Connections</b> → <b>Add connection</b>. Search for <b>&apos;Revenue Recovery Engine&apos;</b> and click <b>Confirm</b>.
+        </>
       ),
       critical: true,
     },
@@ -189,9 +221,9 @@ function StepApiKey({ checks, toggleCheck }) {
       <StepHeader
         icon={KeyRound}
         title="Create Your API Key"
-        description="We need a secure key so your automation engine can read your Notion databases."
+        description="We need a secure key so your automation engine can read and update your Notion databases."
       />
-      <div className="space-y-2.5">
+      <div className="space-y-5">
         {items.map((item, i) => (
           <ChecklistItem
             key={i}
@@ -339,7 +371,7 @@ function StepSync({ checks, toggleCheck }) {
         title="The 90-Second Sync"
         description="Because you used our Engine Generator, your file is perfectly pre-mapped. You do NOT need to manually search for databases or fix empty fields."
       />
-      <div className="space-y-2.5">
+      <div className="space-y-5">
         {items.map((item, i) => (
           <div key={i} className="flex gap-3">
             <div className="flex-1">
@@ -396,7 +428,7 @@ function StepPreflight({ checks, toggleCheck, allDone }) {
         title="Run the Preflight Check"
         description="You have successfully connected your brain (Notion) to your muscle (Make.com). Click the Disk icon to Save, then click Run Once in Make.com."
       />
-      <div className="space-y-2.5">
+      <div className="space-y-5">
         {items.map((item, i) => (
           <ChecklistItem
             key={i}
@@ -442,7 +474,7 @@ export default function SetupWizard() {
   const [direction, setDirection] = useState(1);
 
   const [step1Checks, setStep1Checks] = useState([false, false, false]);
-  const [step2Checks, setStep2Checks] = useState([false, false, false]);
+  const [step2Checks, setStep2Checks] = useState([false, false, false, false]);
   const [token, setToken] = useState('');
   const [apiState, setApiState] = useState('idle');
   const [apiResult, setApiResult] = useState(null);
