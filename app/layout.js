@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Blueprint Personalizer',
-  description: 'Personalize your Make.com blueprints with your Notion database IDs',
+  title: 'Revenue Recovery Engine — Setup Wizard',
+  description: 'Set up your Revenue Recovery Engine in 5 easy steps.',
 };
 
 export default function RootLayout({ children }) {
