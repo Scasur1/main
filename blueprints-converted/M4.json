@@ -10981,7 +10981,7 @@
                       "%3A%3DML": "Log in to Make.com. Click on Credentials (the Shield icon) in the left sidebar, find your Google/Gmail connection, and click Reauthorize."
                     },
                     "select": "list",
-                    "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                    "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
                   },
                   "metadata": {
                     "designer": {
@@ -11017,7 +11017,7 @@
                         "select": {
                           "label": "Specific Fields of Data Source"
                         },
-                        "database": {
+                        "data_source": {
                           "nested": [
                             {
                               "name": "fields",
@@ -11196,9 +11196,9 @@
                         }
                       },
                       {
-                        "name": "database",
+                        "name": "data_source",
                         "type": "text",
-                        "label": "Database ID",
+                        "label": "Data Source ID",
                         "required": true
                       },
                       {

@@ -2118,7 +2118,7 @@
                   "%3A%3DML": "Please ensure only ONE row exists in the System Settings database. Delete empty/extra rows."
                 },
                 "select": "list",
-                "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
               },
               "metadata": {
                 "designer": {
@@ -2154,7 +2154,7 @@
                     "select": {
                       "label": "Specific Fields of Data Source"
                     },
-                    "database": {
+                    "data_source": {
                       "nested": [
                         {
                           "name": "fields",
@@ -2333,9 +2333,9 @@
                     }
                   },
                   {
-                    "name": "database",
+                    "name": "data_source",
                     "type": "text",
-                    "label": "Database ID",
+                    "label": "Data Source ID",
                     "required": true
                   },
                   {
@@ -3511,7 +3511,7 @@
                   "%3A%3DML": "Check the webhook URL in your external tool (Typeform, Calendly, etc.). Ensure the \"?token=\" parameter exactly matches the Webhook Secret Token in your System Settings. If you didn't set up a new form recently, this was a spam bot. No action is needed."
                 },
                 "select": "list",
-                "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
               },
               "metadata": {
                 "designer": {
@@ -3547,7 +3547,7 @@
                     "select": {
                       "label": "Specific Fields of Data Source"
                     },
-                    "database": {
+                    "data_source": {
                       "nested": [
                         {
                           "name": "fields",
@@ -3726,9 +3726,9 @@
                     }
                   },
                   {
-                    "name": "database",
+                    "name": "data_source",
                     "type": "text",
-                    "label": "Database ID",
+                    "label": "Data Source ID",
                     "required": true
                   },
                   {
@@ -8445,7 +8445,7 @@
                           "%3A%3DML": "No action needed. The system prevented creating a duplicate record to avoid spamming the client. Their existing sequence and notes have not been modified."
                         },
                         "select": "list",
-                        "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                        "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
                       },
                       "metadata": {
                         "designer": {
@@ -8481,7 +8481,7 @@
                             "select": {
                               "label": "Specific Fields of Data Source"
                             },
-                            "database": {
+                            "data_source": {
                               "nested": [
                                 {
                                   "name": "fields",
@@ -8660,9 +8660,9 @@
                             }
                           },
                           {
-                            "name": "database",
+                            "name": "data_source",
                             "type": "text",
-                            "label": "Database ID",
+                            "label": "Data Source ID",
                             "required": true
                           },
                           {
@@ -9831,7 +9831,7 @@
                           "d%3D%3F%3B": false
                         },
                         "select": "list",
-                        "database": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                        "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
                       },
                       "metadata": {
                         "designer": {
@@ -9895,7 +9895,7 @@
                             "select": {
                               "label": "Specific Fields of Data Source"
                             },
-                            "database": {
+                            "data_source": {
                               "nested": [
                                 {
                                   "name": "fields",
@@ -10253,9 +10253,9 @@
                             }
                           },
                           {
-                            "name": "database",
+                            "name": "data_source",
                             "type": "text",
-                            "label": "Database ID",
+                            "label": "Data Source ID",
                             "required": true
                           },
                           {
