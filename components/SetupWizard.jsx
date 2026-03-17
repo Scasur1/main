@@ -177,7 +177,7 @@ function StepApiKey({ checks, toggleCheck }) {
           >
             here
           </a>{' '}
-          to open your Notion Integrations. Click the <b>+ Create a new integration</b> block. Name it <b>&apos;Revenue Recovery Engine&apos;</b> and click <b>Create</b>.
+          to open your Notion Integrations. Click <b>+ Create a new integration</b>. Name it <b>&apos;Revenue Recovery Engine&apos;</b>, select your <b>Associated workspace</b>, and click <b>Create</b>.
         </>
       ),
     },
