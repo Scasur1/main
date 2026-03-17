@@ -19,8 +19,8 @@
             }
           ]
         ],
-        "select": "page",
-        "database": "314869cd-9cc1-803d-bb6f-000b22fb720c"
+        "select": "data_source_item",
+        "data_source": "314869cd-9cc1-803d-bb6f-000b22fb720c"
       },
       "metadata": {
         "designer": {
@@ -34,9 +34,9 @@
               "mode": "chose"
             },
             "select": {
-              "label": "Pages"
+              "label": "Data Source ItemsThis must be used if your database has multiple data sources."
             },
-            "database": {
+            "data_source": {
               "rpcSearch": {
                 "label": "System Settings",
                 "value": "314869cd-9cc1-803d-bb6f-000b22fb720c"
@@ -69,7 +69,7 @@
             "required": true,
             "validate": {
               "enum": [
-                "page",
+                "data_source_item",
                 "data_source",
                 "page",
                 "item",
@@ -83,9 +83,9 @@
             "label": "Limit"
           },
           {
-            "name": "database",
+            "name": "data_source",
             "type": "text",
-            "label": "Database ID",
+            "label": "Data source ID",
             "required": true
           },
           {
@@ -2245,8 +2245,8 @@
                             }
                           ]
                         ],
-                        "select": "page",
-                        "database": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                        "select": "data_source_item",
+                        "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
                       },
                       "metadata": {
                         "designer": {
@@ -2260,9 +2260,9 @@
                               "mode": "chose"
                             },
                             "select": {
-                              "label": "Pages"
+                              "label": "Data Source ItemsThis must be used if your database has multiple data sources."
                             },
-                            "database": {
+                            "data_source": {
                               "rpcSearch": {
                                 "label": "Clients",
                                 "value": "314869cd-9cc1-80e9-a154-000b55d12bb0"
@@ -2295,7 +2295,7 @@
                             "required": true,
                             "validate": {
                               "enum": [
-                                "page",
+                                "data_source_item",
                                 "data_source",
                                 "page",
                                 "item",
@@ -2309,9 +2309,9 @@
                             "label": "Limit"
                           },
                           {
-                            "name": "database",
+                            "name": "data_source",
                             "type": "text",
-                            "label": "Database ID",
+                            "label": "Data source ID",
                             "required": true
                           },
                           {
@@ -3998,8 +3998,8 @@
                                     }
                                   ]
                                 ],
-                                "select": "page",
-                                "database": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                "select": "data_source_item",
+                                "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
                               },
                               "metadata": {
                                 "designer": {
@@ -4013,9 +4013,9 @@
                                       "mode": "chose"
                                     },
                                     "select": {
-                                      "label": "Pages"
+                                      "label": "Data Source ItemsThis must be used if your database has multiple data sources."
                                     },
-                                    "database": {
+                                    "data_source": {
                                       "rpcSearch": {
                                         "label": "Clients",
                                         "value": "314869cd-9cc1-80e9-a154-000b55d12bb0"
@@ -4048,7 +4048,7 @@
                                     "required": true,
                                     "validate": {
                                       "enum": [
-                                        "page",
+                                        "data_source_item",
                                         "data_source",
                                         "page",
                                         "item",
@@ -4062,9 +4062,9 @@
                                     "label": "Limit"
                                   },
                                   {
-                                    "name": "database",
+                                    "name": "data_source",
                                     "type": "text",
-                                    "label": "Database ID",
+                                    "label": "Data source ID",
                                     "required": true
                                   },
                                   {
