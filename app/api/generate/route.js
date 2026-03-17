@@ -13,10 +13,10 @@ import M6 from '../../../blueprints/M6.json';
 const BLUEPRINTS = { M0, M1, M2, M3, M4, M5, M6 };
 
 const OLD_IDS = {
-  systemSettings: '314869cd-9cc1-803d-bb6f-000b22fb720c',
-  clients:        '314869cd-9cc1-80e9-a154-000b55d12bb0',
-  systemLogs:     '319869cd-9cc1-8060-9c1e-000baffc56c4',
-  dashboardKpis:  '317869cd-9cc1-8099-be78-000b5e8d2140',
+  systemSettings: '314869cd-9cc1-8015-8ede-f20c7759b4b4',
+  clients:        '314869cd-9cc1-80f8-9bd4-eeda05b64741',
+  systemLogs:     '319869cd-9cc1-8055-b71c-e479cda951d6',
+  dashboardKpis:  '317869cd-9cc1-80f8-bf40-dae0672a5a4a',
   mainConfigPage: '320869cd-9cc1-81a7-883f-dd59822b7904',
 };
 
