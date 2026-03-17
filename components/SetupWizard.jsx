@@ -4,22 +4,23 @@ import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Copy,
+  Database,
   Download,
+  ExternalLink,
+  Eye,
+  Import,
   KeyRound,
+  Layers,
   CheckCircle2,
   ArrowRight,
   Rocket,
   ShieldCheck,
   Sparkles,
-  FileJson,
   Link2,
   Mail,
   Settings,
-  UserPlus,
-  Globe,
-  Eye,
-  ExternalLink,
   Sliders,
+  UserPlus,
 } from 'lucide-react';
 import Confetti from 'react-confetti';
 import ProgressBar from './ProgressBar';
@@ -259,7 +260,7 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
           </div>
           <input
             type="password"
-            placeholder="ntn_... or secret_..."
+            placeholder="ntn_..."
             value={token}
             onChange={(e) => setToken(e.target.value)}
             disabled={apiState === 'loading' || apiState === 'success'}
@@ -309,10 +310,10 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="space-y-3"
+            className="flex flex-col items-center space-y-3"
           >
-            <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2.5">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-50 border border-emerald-200 rounded-xl">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <p className="text-emerald-800 font-medium text-sm">
                 Databases verified! Your custom engine file is ready.
               </p>
@@ -321,7 +322,7 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={onDownload}
-              className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 text-sm"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-lg shadow-emerald-500/25 text-sm"
             >
               <Download className="w-4 h-4" />
               Download Revenue_Recovery_M5.json
@@ -339,28 +340,40 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
 function StepSync({ checks, toggleCheck }) {
   const items = [
     {
-      icon: FileJson,
-      title: 'Import Blueprint',
+      icon: Import,
+      title: 'Import the Blueprint',
       description: (
-        <>Log into <b>Make.com</b>, create a new scenario, select <b>&apos;Import Blueprint&apos;</b>, and upload the <b>M5.json</b> file you just downloaded.</>
+        <>
+          Log into <b>Make.com</b>. On the left purple menu, click <b>Scenarios</b>, then the <b>+ Create a new scenario</b> button. Click the <b>&apos;...&apos;</b> menu at the bottom, select <b>Import Blueprint</b>, and upload your downloaded <b>M5.json</b> file.
+        </>
       ),
-      placeholder: 'import-blueprint-demo.gif',
     },
     {
-      icon: Globe,
-      title: 'Connect Notion',
+      icon: Database,
+      title: 'Connect Your Notion',
       description: (
-        <>Click the first <b>black Notion module</b>. Click <b>Add</b>, select <b>&apos;Notion Internal&apos;</b>, name it <b>&apos;My Notion&apos;</b>, paste your <b>Secret Key</b> from Step 2, and click <b>Save</b>. Do this for all black modules. (Ignore any blue Legacy warnings).</>
+        <>
+          Click the first black Notion module named <b>&apos;Fetch System Settings&apos;</b>. Click <b>Create a connection</b>. Select <b>Notion Internal</b> as the type, paste your <b>Secret Key</b> from Phase 2, and click <b>Save</b>.
+        </>
       ),
-      placeholder: 'connect-notion-demo.gif',
+    },
+    {
+      icon: Layers,
+      title: 'Secure All Modules',
+      description: (
+        <>
+          Click <b>Save</b> on the module details. Then, open <b>every other black Notion module</b> in the scenario. Under the connection dropdown, simply select the <b>&apos;My Notion Internal&apos;</b> connection you just created and click <b>Save</b>.
+        </>
+      ),
     },
     {
       icon: Mail,
-      title: 'Connect Gmail',
+      title: 'Connect Your Gmail',
       description: (
-        <>Click the <b>red Gmail module</b>. Click <b>Add</b>, sign in with your Google account, and grant permission.</>
+        <>
+          Click the red <b>Gmail</b> module. Click <b>Create a connection</b>, then <b>Sign in with Google</b>. Select your correct email from the pop-up, approve the permissions, and click <b>Save</b> on the module.
+        </>
       ),
-      placeholder: 'connect-gmail-demo.gif',
     },
   ];
 
@@ -369,7 +382,7 @@ function StepSync({ checks, toggleCheck }) {
       <StepHeader
         icon={Rocket}
         title="The 90-Second Sync"
-        description="Because you used our Engine Generator, your file is perfectly pre-mapped. You do NOT need to manually search for databases or fix empty fields."
+        description="Your file is perfectly pre-mapped. You do NOT need to manually search for databases. Just import and connect."
       />
       <div className="space-y-5">
         {items.map((item, i) => (
@@ -383,8 +396,8 @@ function StepSync({ checks, toggleCheck }) {
                 description={item.description}
               />
             </div>
-            <div className="hidden md:flex w-28 h-20 rounded-lg bg-gray-100 border border-gray-200 items-center justify-center shrink-0 self-center">
-              <span className="text-[9px] text-gray-400 text-center px-1">{item.placeholder}</span>
+            <div className="hidden md:flex w-32 h-24 rounded-md bg-gray-100 border border-gray-200 items-center justify-center shrink-0 self-center">
+              <span className="text-[10px] text-gray-400 font-medium">GIF Placeholder</span>
             </div>
           </div>
         ))}
@@ -479,7 +492,7 @@ export default function SetupWizard() {
   const [apiState, setApiState] = useState('idle');
   const [apiResult, setApiResult] = useState(null);
   const [downloaded, setDownloaded] = useState(false);
-  const [step4Checks, setStep4Checks] = useState([false, false, false]);
+  const [step4Checks, setStep4Checks] = useState([false, false, false, false]);
   const [step5Checks, setStep5Checks] = useState([false, false, false]);
 
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
