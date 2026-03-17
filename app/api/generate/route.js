@@ -2,13 +2,13 @@ export const runtime = 'edge';
 
 import { NextResponse } from 'next/server';
 
-import M0 from '../../../blueprints-converted/M0.json';
-import M1 from '../../../blueprints-converted/M1.json';
-import M2 from '../../../blueprints-converted/M2.json';
-import M3 from '../../../blueprints-converted/M3.json';
-import M4 from '../../../blueprints-converted/M4.json';
-import M5 from '../../../blueprints-converted/M5.json';
-import M6 from '../../../blueprints-converted/M6.json';
+import M0 from '../../../blueprints/M0.json';
+import M1 from '../../../blueprints/M1.json';
+import M2 from '../../../blueprints/M2.json';
+import M3 from '../../../blueprints/M3.json';
+import M4 from '../../../blueprints/M4.json';
+import M5 from '../../../blueprints/M5.json';
+import M6 from '../../../blueprints/M6.json';
 
 const BLUEPRINTS = { M0, M1, M2, M3, M4, M5, M6 };
 
