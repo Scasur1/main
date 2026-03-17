@@ -4121,7 +4121,7 @@
                   "%3A%3DML": "Please check the email address, fix the typo, and set status back to Active."
                 },
                 "select": "list",
-                "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
               },
               "metadata": {
                 "designer": {
@@ -4157,7 +4157,7 @@
                     "select": {
                       "label": "Specific Fields of Data Source"
                     },
-                    "database": {
+                    "data_source": {
                       "nested": [
                         {
                           "name": "fields",
@@ -4336,9 +4336,9 @@
                     }
                   },
                   {
-                    "name": "database",
+                    "name": "data_source",
                     "type": "text",
-                    "label": "Database ID",
+                    "label": "Data Source ID",
                     "required": true
                   },
                   {
@@ -10182,7 +10182,7 @@
                               "%3A%3DML": "Please check your OpenAI billing dashboard. Read the client's email manually in Gmail and update the Status."
                             },
                             "select": "list",
-                            "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                            "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
                           },
                           "metadata": {
                             "designer": {
@@ -10218,7 +10218,7 @@
                                 "select": {
                                   "label": "Specific Fields of Data Source"
                                 },
-                                "database": {
+                                "data_source": {
                                   "nested": [
                                     {
                                       "name": "fields",
@@ -10397,9 +10397,9 @@
                                 }
                               },
                               {
-                                "name": "database",
+                                "name": "data_source",
                                 "type": "text",
-                                "label": "Database ID",
+                                "label": "Data Source ID",
                                 "required": true
                               },
                               {
@@ -13380,7 +13380,7 @@
                                   "%3A%3DML": "Client is Out of Office. Please read the email, manually set the 'Next Follow-up Date' in Notion, and change the status back to 'Active'."
                                 },
                                 "select": "list",
-                                "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
                               },
                               "metadata": {
                                 "designer": {
@@ -13416,7 +13416,7 @@
                                     "select": {
                                       "label": "Specific Fields of Data Source"
                                     },
-                                    "database": {
+                                    "data_source": {
                                       "nested": [
                                         {
                                           "name": "fields",
@@ -13595,9 +13595,9 @@
                                     }
                                   },
                                   {
-                                    "name": "database",
+                                    "name": "data_source",
                                     "type": "text",
-                                    "label": "Database ID",
+                                    "label": "Data Source ID",
                                     "required": true
                                   },
                                   {
@@ -16553,7 +16553,7 @@
                                   "%3A%3DML": "None. Lead moved to CLOSED."
                                 },
                                 "select": "list",
-                                "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
                               },
                               "metadata": {
                                 "designer": {
@@ -16589,7 +16589,7 @@
                                     "select": {
                                       "label": "Specific Fields of Data Source"
                                     },
-                                    "database": {
+                                    "data_source": {
                                       "nested": [
                                         {
                                           "name": "fields",
@@ -16768,9 +16768,9 @@
                                     }
                                   },
                                   {
-                                    "name": "database",
+                                    "name": "data_source",
                                     "type": "text",
-                                    "label": "Database ID",
+                                    "label": "Data Source ID",
                                     "required": true
                                   },
                                   {
@@ -19976,7 +19976,7 @@
                                   "%3A%3DML": "High-priority! Please check your Gmail and reply manually to close the deal."
                                 },
                                 "select": "list",
-                                "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
                               },
                               "metadata": {
                                 "designer": {
@@ -20012,7 +20012,7 @@
                                     "select": {
                                       "label": "Specific Fields of Data Source"
                                     },
-                                    "database": {
+                                    "data_source": {
                                       "nested": [
                                         {
                                           "name": "fields",
@@ -20191,9 +20191,9 @@
                                     }
                                   },
                                   {
-                                    "name": "database",
+                                    "name": "data_source",
                                     "type": "text",
-                                    "label": "Database ID",
+                                    "label": "Data Source ID",
                                     "required": true
                                   },
                                   {
@@ -23135,7 +23135,7 @@
                                   "%3A%3DML": "Manual review required. Please check the email manually via Draft Link or Gmail and update the Status."
                                 },
                                 "select": "list",
-                                "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
                               },
                               "metadata": {
                                 "designer": {
@@ -23171,7 +23171,7 @@
                                     "select": {
                                       "label": "Specific Fields of Data Source"
                                     },
-                                    "database": {
+                                    "data_source": {
                                       "nested": [
                                         {
                                           "name": "fields",
@@ -23350,9 +23350,9 @@
                                     }
                                   },
                                   {
-                                    "name": "database",
+                                    "name": "data_source",
                                     "type": "text",
-                                    "label": "Database ID",
+                                    "label": "Data Source ID",
                                     "required": true
                                   },
                                   {
@@ -24532,7 +24532,7 @@
                           "%3A%3DML": "CRITICAL: The automation is halted. Please go to the 'System Settings' database and delete the extra rows. There must be exactly ONE row."
                         },
                         "select": "list",
-                        "database": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                        "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
                       },
                       "metadata": {
                         "designer": {
@@ -24568,7 +24568,7 @@
                             "select": {
                               "label": "Specific Fields of Data Source"
                             },
-                            "database": {
+                            "data_source": {
                               "nested": [
                                 {
                                   "name": "fields",
@@ -24747,9 +24747,9 @@
                             }
                           },
                           {
-                            "name": "database",
+                            "name": "data_source",
                             "type": "text",
-                            "label": "Database ID",
+                            "label": "Data Source ID",
                             "required": true
                           },
                           {
