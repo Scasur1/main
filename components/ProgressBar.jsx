@@ -9,6 +9,7 @@ const STEP_LABELS = [
   'Engine',
   'Sync',
   'Preflight',
+  'Deploy',
 ];
 
 export default function ProgressBar({ currentStep, totalSteps }) {

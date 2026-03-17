@@ -3,29 +3,34 @@
 import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
+  ArrowRight,
+  CheckCheck,
+  CheckCircle2,
+  Clock,
+  CloudDownload,
   Copy,
   Database,
   Download,
   ExternalLink,
   Eye,
-  Import,
   KeyRound,
-  Layers,
-  CheckCircle2,
-  ArrowRight,
-  Rocket,
-  ShieldCheck,
-  Sparkles,
   Link2,
   Mail,
+  MailCheck,
+  Power,
+  Rocket,
+  Save,
   Settings,
+  ShieldCheck,
   Sliders,
+  Sparkles,
   UserPlus,
+  Zap,
 } from 'lucide-react';
 import Confetti from 'react-confetti';
 import ProgressBar from './ProgressBar';
 
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 6;
 
 const slideVariants = {
   enter: (direction) => ({ x: direction > 0 ? 200 : -200, opacity: 0 }),
@@ -310,9 +315,9 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center space-y-3"
+            className="max-w-md mx-auto p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex flex-col items-center justify-center text-center space-y-3"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-50 border border-emerald-200 rounded-xl">
+            <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <p className="text-emerald-800 font-medium text-sm">
                 Databases verified! Your custom engine file is ready.
@@ -322,7 +327,7 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={onDownload}
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-lg shadow-emerald-500/25 text-sm"
+              className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-md shadow-emerald-500/25 text-sm"
             >
               <Download className="w-4 h-4" />
               Download Revenue_Recovery_M5.json
@@ -340,11 +345,11 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
 function StepSync({ checks, toggleCheck }) {
   const items = [
     {
-      icon: Import,
+      icon: Download,
       title: 'Import the Blueprint',
       description: (
         <>
-          Log into <b>Make.com</b>. On the left purple menu, click <b>Scenarios</b>, then the <b>+ Create a new scenario</b> button. Click the <b>&apos;...&apos;</b> menu at the bottom, select <b>Import Blueprint</b>, and upload your downloaded <b>M5.json</b> file.
+          Log into <b>Make.com</b>. On the left purple menu, click <b>Scenarios</b>, then the <b>+ Create a new scenario</b> button. Click the <b>&apos;...&apos;</b> menu in the <b>top right</b>, select <b>Import Blueprint</b>, and upload your downloaded <b>M5.json</b> file.
         </>
       ),
     },
@@ -358,7 +363,7 @@ function StepSync({ checks, toggleCheck }) {
       ),
     },
     {
-      icon: Layers,
+      icon: CheckCheck,
       title: 'Secure All Modules',
       description: (
         <>
@@ -397,7 +402,7 @@ function StepSync({ checks, toggleCheck }) {
               />
             </div>
             <div className="hidden md:flex w-32 h-24 rounded-md bg-gray-100 border border-gray-200 items-center justify-center shrink-0 self-center">
-              <span className="text-[10px] text-gray-400 font-medium">GIF Placeholder</span>
+              <span className="text-xs text-gray-400">GIF</span>
             </div>
           </div>
         ))}
@@ -409,8 +414,15 @@ function StepSync({ checks, toggleCheck }) {
 // ---------------------------------------------------------------------------
 // Step 5: Run the Preflight Check
 // ---------------------------------------------------------------------------
-function StepPreflight({ checks, toggleCheck, allDone }) {
+function StepPreflight({ checks, toggleCheck }) {
   const items = [
+    {
+      icon: Save,
+      title: 'Save & Run',
+      description: (
+        <>Click the yellow dotted <b>Disk icon</b> at the bottom of Make.com to <b>Save</b>, then click <b>Run Once</b>.</>
+      ),
+    },
     {
       icon: CheckCircle2,
       title: 'Modules Ran Successfully',
@@ -419,7 +431,7 @@ function StepPreflight({ checks, toggleCheck, allDone }) {
       ),
     },
     {
-      icon: Mail,
+      icon: MailCheck,
       title: 'Email Draft Confirmed',
       description: (
         <>Check your <b>Gmail Drafts</b> folder. Is there an email titled <b>&apos;System Check: All Systems Go!&apos;</b>?</>
@@ -439,7 +451,7 @@ function StepPreflight({ checks, toggleCheck, allDone }) {
       <StepHeader
         icon={ShieldCheck}
         title="Run the Preflight Check"
-        description="You have successfully connected your brain (Notion) to your muscle (Make.com). Click the Disk icon to Save, then click Run Once in Make.com."
+        description="You have successfully connected your brain (Notion) to your muscle (Make.com). Time to verify everything works."
       />
       <div className="space-y-5">
         {items.map((item, i) => (
@@ -453,6 +465,107 @@ function StepPreflight({ checks, toggleCheck, allDone }) {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Step 6: Deploy Core Engines
+// ---------------------------------------------------------------------------
+function StepDeploy({ checks, toggleCheck, apiResult, allDone }) {
+  const engineFiles = ['M1', 'M2', 'M3', 'M4', 'M6'];
+
+  const handleDownloadEngine = (key) => {
+    if (!apiResult?.blueprints?.[key]) return;
+    const blob = new Blob([apiResult.blueprints[key]], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Revenue_Recovery_${key}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const items = [
+    {
+      icon: CloudDownload,
+      title: 'Download Your Engines',
+      description: (
+        <>
+          Download your personalized core engine files: <b>M1, M2, M3, M4, and M6</b>.
+          <div className="flex flex-wrap gap-2 mt-2">
+            {engineFiles.map((key) => (
+              <button
+                key={key}
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDownloadEngine(key); }}
+                disabled={!apiResult?.blueprints?.[key]}
+                className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold rounded-full border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              >
+                <Download className="w-3 h-3" />
+                {key}.json
+              </button>
+            ))}
+          </div>
+        </>
+      ),
+    },
+    {
+      icon: Zap,
+      title: 'Import & Connect (The Fast Way)',
+      description: (
+        <>
+          In <b>Make.com</b>, create new scenarios and <b>Import Blueprint</b> for each file. Since you completed M5, you do NOT need to create new connections! Just click each module, select your existing <b>&apos;My Notion Internal&apos;</b> and <b>Gmail</b> connections, and click <b>Save</b>. <em className="text-gray-400">(If using AI, add your OpenAI key).</em>
+        </>
+      ),
+    },
+    {
+      icon: Clock,
+      title: 'Set the Schedules',
+      description: (
+        <>
+          Click the clock icon on the very first module of each scenario to set their schedules based on your <b>Local Time Zone</b> to prevent collisions:
+          <ul className="mt-1.5 ml-4 space-y-0.5 list-disc text-[13px]">
+            <li><b>M6:</b> Every day at <b>08:30</b></li>
+            <li><b>M3:</b> Every <b>4 hours</b></li>
+            <li><b>M1:</b> Every <b>15 minutes</b></li>
+            <li><b>M2:</b> Every day at <b>09:15</b></li>
+            <li><b>M4:</b> Every day at <b>09:30</b></li>
+          </ul>
+        </>
+      ),
+      critical: true,
+    },
+    {
+      icon: Power,
+      title: 'Turn Everything ON',
+      description: (
+        <>
+          Click the <b>Disk icon</b> (Save) at the bottom of each scenario, then toggle the switch in the bottom left corner to <b>ON</b>. Your Revenue Recovery Engine is now live!
+        </>
+      ),
+    },
+  ];
+
+  return (
+    <div>
+      <StepHeader
+        icon={Rocket}
+        title="Deploy Core Engines"
+        description="Your infrastructure is healthy. It's time to import your main automation files, set their schedules, and turn the system ON."
+      />
+      <div className="space-y-5">
+        {items.map((item, i) => (
+          <ChecklistItem
+            key={i}
+            checked={checks[i]}
+            onChange={() => toggleCheck(i)}
+            icon={item.icon}
+            title={item.title}
+            description={item.description}
+            critical={item.critical}
+          />
+        ))}
+      </div>
 
       <AnimatePresence>
         {allDone && (
@@ -460,7 +573,7 @@ function StepPreflight({ checks, toggleCheck, allDone }) {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="mt-4 text-center py-5 px-4 bg-gradient-to-br from-emerald-50 to-blue-50 rounded-xl border border-emerald-200"
+            className="mt-5 text-center py-5 px-4 bg-gradient-to-br from-emerald-50 to-blue-50 rounded-xl border border-emerald-200"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -471,7 +584,7 @@ function StepPreflight({ checks, toggleCheck, allDone }) {
               🎉
             </motion.div>
             <h3 className="text-xl font-bold text-gray-900 mb-1">Congratulations!</h3>
-            <p className="text-gray-600 text-sm">Your infrastructure is officially flawless.</p>
+            <p className="text-gray-600 text-sm">Your Revenue Recovery Engine is officially live.</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -493,7 +606,8 @@ export default function SetupWizard() {
   const [apiResult, setApiResult] = useState(null);
   const [downloaded, setDownloaded] = useState(false);
   const [step4Checks, setStep4Checks] = useState([false, false, false, false]);
-  const [step5Checks, setStep5Checks] = useState([false, false, false]);
+  const [step5Checks, setStep5Checks] = useState([false, false, false, false]);
+  const [step6Checks, setStep6Checks] = useState([false, false, false, false]);
 
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [showConfetti, setShowConfetti] = useState(false);
@@ -522,6 +636,7 @@ export default function SetupWizard() {
       case 2: return apiState === 'success' && downloaded;
       case 3: return allChecked(step4Checks);
       case 4: return allChecked(step5Checks);
+      case 5: return allChecked(step6Checks);
       default: return false;
     }
   };
@@ -547,7 +662,7 @@ export default function SetupWizard() {
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ notionToken: token, selectedBlueprints: ['M5'] }),
+        body: JSON.stringify({ notionToken: token, selectedBlueprints: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'] }),
       });
       if (!res.ok) { setApiState('error'); return; }
       const data = await res.json();
@@ -570,14 +685,10 @@ export default function SetupWizard() {
     setDownloaded(true);
   };
 
-  const handleStep5Toggle = (index) => {
-    setStep5Checks((prev) => {
+  const handleStep6Toggle = (index) => {
+    setStep6Checks((prev) => {
       const next = [...prev];
       next[index] = !next[index];
-      if (next.every(Boolean)) {
-        setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 6000);
-      }
       return next;
     });
   };
@@ -587,11 +698,12 @@ export default function SetupWizard() {
     'Next Step: Generate My Engine',
     'Next Step: The 90-Second Sync',
     'Next Step: The Preflight Check',
+    'Next Step: Deploy Core Engines',
     'Finish Setup & Go to Dashboard',
   ];
 
   const isLastStep = currentStep === TOTAL_STEPS - 1;
-  const isFinalDone = isLastStep && allChecked(step5Checks);
+  const isFinalDone = isLastStep && allChecked(step6Checks);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex flex-col">
@@ -658,8 +770,15 @@ export default function SetupWizard() {
                 {currentStep === 4 && (
                   <StepPreflight
                     checks={step5Checks}
-                    toggleCheck={handleStep5Toggle}
-                    allDone={allChecked(step5Checks)}
+                    toggleCheck={makeToggle(setStep5Checks)}
+                  />
+                )}
+                {currentStep === 5 && (
+                  <StepDeploy
+                    checks={step6Checks}
+                    toggleCheck={handleStep6Toggle}
+                    apiResult={apiResult}
+                    allDone={allChecked(step6Checks)}
                   />
                 )}
               </motion.div>
@@ -679,7 +798,7 @@ export default function SetupWizard() {
             <motion.button
               whileHover={canProceed() ? { scale: 1.02 } : {}}
               whileTap={canProceed() ? { scale: 0.98 } : {}}
-              onClick={isFinalDone ? () => (window.location.href = '/') : nextStep}
+              onClick={isFinalDone ? () => { setShowConfetti(true); setTimeout(() => setShowConfetti(false), 6000); setTimeout(() => (window.location.href = '/'), 3000); } : nextStep}
               disabled={!canProceed()}
               className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl transition-all ${
                 canProceed()
