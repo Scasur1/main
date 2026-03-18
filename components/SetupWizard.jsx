@@ -129,7 +129,7 @@ function StepPrepare({ checks, toggleCheck }) {
       icon: Settings,
       title: 'Configure System Settings',
       description: (
-        <>Open the <b>System Settings</b> database. Enter your <b>Admin Email</b>. Ensure the <b>Safety Switch</b> is checked (✅) and <b>AI Enabled</b> is unchecked (⬜).</>
+        <>Open the <b>System Settings</b> database. Enter your <b>Admin Email</b>. Ensure the <b>Safety Switch</b> is checked (✅) and <b>AI Enabled</b> is unchecked (⬜). <b className="text-amber-600">Do not touch any other fields for now.</b></>
       ),
     },
     {
@@ -368,7 +368,7 @@ function StepSync({ checks, toggleCheck }) {
       title: 'Secure All Modules',
       description: (
         <>
-          Click <b>Save</b> on the module details. Then, open <b>every other black Notion module</b> in the scenario. Under the connection dropdown, simply select the <b>&apos;My Notion Internal&apos;</b> connection you just created and click <b>Save</b>.
+          Click <b>Save</b> on the module details. Then, open <b>every other black Notion module</b> in the scenario. Under the connection dropdown, simply select the <b>&apos;My Notion Internal&apos;</b> connection you just created and click <b>Save</b>. <em className="text-gray-400">(Note: It may take 1-2 seconds for the module fields to load before the Save button appears. Please wait a moment.)</em>
         </>
       ),
     },
@@ -415,7 +415,7 @@ function StepSync({ checks, toggleCheck }) {
 // ---------------------------------------------------------------------------
 // Step 5: Run the Preflight Check
 // ---------------------------------------------------------------------------
-function StepPreflight({ checks, toggleCheck }) {
+function StepPreflight({ checks, toggleCheck, allVerified }) {
   const items = [
     {
       icon: Save,
@@ -442,7 +442,7 @@ function StepPreflight({ checks, toggleCheck }) {
       icon: ShieldCheck,
       title: 'System Log Verified',
       description: (
-        <>Check your Notion <b>&apos;System Logs&apos;</b>. Does it say <b>&apos;M5 Success - Ready for Live&apos;</b>?</>
+        <>Check your Notion <b>&apos;System Logs&apos;</b> (you will find this table towards the middle of your Notion dashboard). Does it say <b>&apos;M5 Success - Ready for Live&apos;</b>?</>
       ),
     },
   ];
@@ -466,6 +466,28 @@ function StepPreflight({ checks, toggleCheck }) {
           />
         ))}
       </div>
+
+      <AnimatePresence>
+        {allVerified && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="mt-5 text-center py-5 px-4 bg-gradient-to-br from-emerald-50 to-blue-50 rounded-xl border border-emerald-200"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 10, delay: 0.2 }}
+              className="text-4xl mb-2"
+            >
+              🎉
+            </motion.div>
+            <h3 className="text-xl font-bold text-gray-900 mb-1">Congratulations!</h3>
+            <p className="text-gray-600 text-sm">You have successfully connected your main engine.</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -621,6 +643,16 @@ export default function SetupWizard() {
 
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [showConfetti, setShowConfetti] = useState(false);
+  const [step5Verified, setStep5Verified] = useState(false);
+
+  // Trigger confetti when all Step 5 (Preflight) checks are completed
+  useEffect(() => {
+    if (allChecked(step5Checks) && !step5Verified) {
+      setStep5Verified(true);
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 6000);
+    }
+  }, [step5Checks, step5Verified]);
 
   useEffect(() => {
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
@@ -781,6 +813,7 @@ export default function SetupWizard() {
                   <StepPreflight
                     checks={step5Checks}
                     toggleCheck={makeToggle(setStep5Checks)}
+                    allVerified={allChecked(step5Checks)}
                   />
                 )}
                 {currentStep === 5 && (
