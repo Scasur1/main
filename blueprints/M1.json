@@ -8600,7 +8600,7 @@
                                                                             "module": "json:ParseJSON",
                                                                             "version": 1,
                                                                             "parameters": {
-                                                                                "type": ""
+                                                                                "type": 342993
                                                                             },
                                                                             "mapper": {
                                                                                 "json": "{{13.result}}"
@@ -8613,7 +8613,7 @@
                                                                                 "restore": {
                                                                                     "parameters": {
                                                                                         "type": {
-                                                                                            "label": "Choose a data structure"
+                                                                                            "label": "AI Output Structure"
                                                                                         }
                                                                                     }
                                                                                 },
@@ -8630,6 +8630,35 @@
                                                                                         "type": "text",
                                                                                         "label": "JSON string",
                                                                                         "required": true
+                                                                                    }
+                                                                                ],
+                                                                                "interface": [
+                                                                                    {
+                                                                                        "name": "subject",
+                                                                                        "label": "Subject",
+                                                                                        "help": "",
+                                                                                        "type": "text",
+                                                                                        "default": null,
+                                                                                        "required": false,
+                                                                                        "multiline": false
+                                                                                    },
+                                                                                    {
+                                                                                        "name": "body",
+                                                                                        "label": "Body",
+                                                                                        "help": "",
+                                                                                        "type": "text",
+                                                                                        "default": null,
+                                                                                        "required": false,
+                                                                                        "multiline": false
+                                                                                    },
+                                                                                    {
+                                                                                        "name": "angle_used",
+                                                                                        "label": "Angle used",
+                                                                                        "help": "",
+                                                                                        "type": "text",
+                                                                                        "default": null,
+                                                                                        "required": false,
+                                                                                        "multiline": false
                                                                                     }
                                                                                 ]
                                                                             }
