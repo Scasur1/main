@@ -1,5 +1,5 @@
 {
-    "name": "M4 - Daily Digest Engine",
+    "name": "M4 - Daily Digest Engine - Yeni",
     "flow": [
         {
             "id": 12,
@@ -10,8 +10,8 @@
             },
             "mapper": {
                 "limit": "1",
-                "select": "data_source_item",
-                "data_source": "314869cd-9cc1-803d-bb6f-000b22fb720c"
+                "select": "item",
+                "database": "314869cd-9cc1-8015-8ede-f20c7759b4b4"
             },
             "metadata": {
                 "designer": {
@@ -25,12 +25,12 @@
                             "mode": "chose"
                         },
                         "select": {
-                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                         },
-                        "data_source": {
+                        "database": {
                             "rpcSearch": {
                                 "label": "System Settings",
-                                "value": "314869cd-9cc1-803d-bb6f-000b22fb720c"
+                                "value": "314869cd-9cc1-8015-8ede-f20c7759b4b4"
                             }
                         }
                     },
@@ -74,9 +74,9 @@
                         "label": "Limit"
                     },
                     {
-                        "name": "data_source",
+                        "name": "database",
                         "type": "text",
-                        "label": "Data source ID",
+                        "label": "Database ID",
                         "required": true
                     },
                     {
@@ -102,10 +102,6 @@
                                     "value": "AI Enabled |&*^%$#@| checkbox"
                                 },
                                 {
-                                    "label": "System Log (Rich text)",
-                                    "value": "System Log |&*^%$#@| rich_text"
-                                },
-                                {
                                     "label": "Auto-Start Webhook Leads (Checkbox)",
                                     "value": "Auto-Start Webhook Leads |&*^%$#@| checkbox"
                                 },
@@ -124,10 +120,6 @@
                                 {
                                     "label": "Default Follow-up Interval (Number)",
                                     "value": "Default Follow-up Interval |&*^%$#@| number"
-                                },
-                                {
-                                    "label": "Default Interval (Number)",
-                                    "value": "Default Interval |&*^%$#@| number"
                                 },
                                 {
                                     "label": "Last Health Check (Date)",
@@ -1422,82 +1414,6 @@
                                 "label": "AI Enabled"
                             },
                             {
-                                "name": "System Log",
-                                "spec": [
-                                    {
-                                        "name": "type",
-                                        "type": "text",
-                                        "label": "Type"
-                                    },
-                                    {
-                                        "name": "text",
-                                        "spec": [
-                                            {
-                                                "name": "content",
-                                                "type": "text",
-                                                "label": "Content"
-                                            },
-                                            {
-                                                "name": "link",
-                                                "type": "text",
-                                                "label": "Link"
-                                            }
-                                        ],
-                                        "type": "collection",
-                                        "label": "Text"
-                                    },
-                                    {
-                                        "name": "annotations",
-                                        "spec": [
-                                            {
-                                                "name": "bold",
-                                                "type": "boolean",
-                                                "label": "Bold"
-                                            },
-                                            {
-                                                "name": "italic",
-                                                "type": "boolean",
-                                                "label": "Italic"
-                                            },
-                                            {
-                                                "name": "strikethrough",
-                                                "type": "boolean",
-                                                "label": "Strikethrough"
-                                            },
-                                            {
-                                                "name": "underline",
-                                                "type": "boolean",
-                                                "label": "Underline"
-                                            },
-                                            {
-                                                "name": "code",
-                                                "type": "boolean",
-                                                "label": "Code"
-                                            },
-                                            {
-                                                "name": "color",
-                                                "type": "text",
-                                                "label": "Color"
-                                            }
-                                        ],
-                                        "type": "collection",
-                                        "label": "Annotations"
-                                    },
-                                    {
-                                        "name": "plain_text",
-                                        "type": "text",
-                                        "label": "Plain Text"
-                                    },
-                                    {
-                                        "name": "href",
-                                        "type": "text",
-                                        "label": "Href"
-                                    }
-                                ],
-                                "type": "array",
-                                "label": "System Log"
-                            },
-                            {
                                 "name": "Auto-Start Webhook Leads",
                                 "type": "boolean",
                                 "label": "Auto-Start Webhook Leads"
@@ -1592,11 +1508,6 @@
                                 "name": "Default Follow-up Interval",
                                 "type": "number",
                                 "label": "Default Follow-up Interval"
-                            },
-                            {
-                                "name": "Default Interval",
-                                "type": "number",
-                                "label": "Default Interval"
                             },
                             {
                                 "name": "Last Health Check",
@@ -2034,8 +1945,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                "select": "item",
+                                "database": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                             },
                             "metadata": {
                                 "designer": {
@@ -2049,12 +1960,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Clients",
-                                                "value": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                                "value": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                                             }
                                         }
                                     },
@@ -2098,9 +2009,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -2590,16 +2501,6 @@
                                     }
                                 ],
                                 "interface": [
-                                    {
-                                        "name": "__IMTLENGTH__",
-                                        "type": "uinteger",
-                                        "label": "Total number of bundles"
-                                    },
-                                    {
-                                        "name": "__IMTINDEX__",
-                                        "type": "uinteger",
-                                        "label": "Bundle order position"
-                                    },
                                     {
                                         "name": "object",
                                         "type": "text",
@@ -4403,8 +4304,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                "select": "item",
+                                "database": "319869cd-9cc1-8055-b71c-e479cda951d6"
                             },
                             "metadata": {
                                 "designer": {
@@ -4418,12 +4319,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "System Logs",
-                                                "value": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                                "value": "319869cd-9cc1-8055-b71c-e479cda951d6"
                                             }
                                         }
                                     },
@@ -4467,9 +4368,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -6348,8 +6249,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                "select": "item",
+                                "database": "319869cd-9cc1-8055-b71c-e479cda951d6"
                             },
                             "metadata": {
                                 "designer": {
@@ -6363,12 +6264,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "System Logs",
-                                                "value": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                                "value": "319869cd-9cc1-8055-b71c-e479cda951d6"
                                             }
                                         }
                                     },
@@ -6412,9 +6313,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -8295,8 +8196,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                "select": "item",
+                                "database": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                             },
                             "metadata": {
                                 "designer": {
@@ -8310,12 +8211,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Clients",
-                                                "value": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                                "value": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                                             }
                                         }
                                     },
@@ -8359,9 +8260,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -10962,8 +10863,8 @@
                             },
                             "onerror": [
                                 {
-                                    "id": 30,
-                                    "module": "notion:createDataSourceItem",
+                                    "id": 47,
+                                    "module": "notion:createAPage",
                                     "version": 1,
                                     "parameters": {
                                         "__IMTCONN__": 5594442
@@ -10981,12 +10882,12 @@
                                             "%3A%3DML": "Log in to Make.com. Click on Credentials (the Shield icon) in the left sidebar, find your Google/Gmail connection, and click Reauthorize."
                                         },
                                         "select": "list",
-                                        "data_source": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                        "database": "319869cd-9cc1-8055-b71c-e479cda951d6"
                                     },
                                     "metadata": {
                                         "designer": {
-                                            "x": 533,
-                                            "y": 785,
+                                            "x": 654,
+                                            "y": 780,
                                             "name": "Log G-Mail Problem"
                                         },
                                         "restore": {
@@ -11015,9 +10916,9 @@
                                                     }
                                                 },
                                                 "select": {
-                                                    "label": "Specific Fields of Data Source"
+                                                    "label": "Select from the list"
                                                 },
-                                                "data_source": {
+                                                "database": {
                                                     "nested": [
                                                         {
                                                             "name": "fields",
@@ -11043,7 +10944,7 @@
                                                                     "name": "CWe~",
                                                                     "type": "select",
                                                                     "label": "Client",
-                                                                    "options": "rpc://notion/1/listDataSourceItems?data_source=314869cd-9cc1-80e9-a154-000b55d12bb0",
+                                                                    "options": "rpc://notion/1/listDatabaseItems?database=314869cd-9cc1-80f8-9bd4-eeda05b64741",
                                                                     "metadata": {
                                                                         "type": "relation"
                                                                     },
@@ -11160,7 +11061,7 @@
                                                     ],
                                                     "rpcSearch": {
                                                         "label": "System Logs",
-                                                        "value": "319869cd-9cc1-8060-9c1e-000baffc56c4"
+                                                        "value": "319869cd-9cc1-8055-b71c-e479cda951d6"
                                                     }
                                                 }
                                             },
@@ -11186,7 +11087,7 @@
                                             {
                                                 "name": "select",
                                                 "type": "select",
-                                                "label": "Input method",
+                                                "label": "Enter a Database ID",
                                                 "required": true,
                                                 "validate": {
                                                     "enum": [
@@ -11196,9 +11097,9 @@
                                                 }
                                             },
                                             {
-                                                "name": "data_source",
+                                                "name": "database",
                                                 "type": "text",
-                                                "label": "Data Source ID",
+                                                "label": "Database ID",
                                                 "required": true
                                             },
                                             {
@@ -11309,21 +11210,6 @@
                                                 "label": "Last Edited Time"
                                             },
                                             {
-                                                "name": "in_trash",
-                                                "type": "boolean",
-                                                "label": "In trash"
-                                            },
-                                            {
-                                                "name": "public_url",
-                                                "type": "text",
-                                                "label": "Public URL"
-                                            },
-                                            {
-                                                "name": "request_id",
-                                                "type": "text",
-                                                "label": "Request ID"
-                                            },
-                                            {
                                                 "name": "created_by",
                                                 "spec": [
                                                     {
@@ -11425,11 +11311,6 @@
                                                         "name": "database_id",
                                                         "type": "text",
                                                         "label": "Database ID"
-                                                    },
-                                                    {
-                                                        "name": "data_source_id",
-                                                        "type": "text",
-                                                        "label": "Data Source ID"
                                                     }
                                                 ],
                                                 "type": "collection",
