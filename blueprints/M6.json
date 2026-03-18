@@ -1,5 +1,5 @@
 {
-    "name": "M6 — KPI Refresh Job",
+    "name": "M6 — KPI Refresh Job - Yeni",
     "flow": [
         {
             "id": 1,
@@ -10,8 +10,8 @@
             },
             "mapper": {
                 "limit": "2",
-                "select": "data_source_item",
-                "data_source": "314869cd-9cc1-803d-bb6f-000b22fb720c"
+                "select": "item",
+                "database": "314869cd-9cc1-8015-8ede-f20c7759b4b4"
             },
             "metadata": {
                 "designer": {
@@ -25,12 +25,12 @@
                             "mode": "chose"
                         },
                         "select": {
-                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                         },
-                        "data_source": {
+                        "database": {
                             "rpcSearch": {
                                 "label": "System Settings",
-                                "value": "314869cd-9cc1-803d-bb6f-000b22fb720c"
+                                "value": "314869cd-9cc1-8015-8ede-f20c7759b4b4"
                             }
                         }
                     },
@@ -74,9 +74,9 @@
                         "label": "Limit"
                     },
                     {
-                        "name": "data_source",
+                        "name": "database",
                         "type": "text",
-                        "label": "Data source ID",
+                        "label": "Database ID",
                         "required": true
                     },
                     {
@@ -1941,7 +1941,7 @@
                 {
                     "flow": [
                         {
-                            "id": 50,
+                            "id": 51,
                             "module": "placeholder:Placeholder",
                             "filter": {
                                 "name": "Safety Switch OFF",
@@ -2001,8 +2001,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                "select": "item",
+                                "database": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                             },
                             "metadata": {
                                 "designer": {
@@ -2016,12 +2016,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Clients",
-                                                "value": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                                "value": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                                             }
                                         }
                                     },
@@ -2065,9 +2065,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -4007,8 +4007,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                "select": "item",
+                                "database": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                             },
                             "metadata": {
                                 "designer": {
@@ -4022,12 +4022,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Dashboard KPIs",
-                                                "value": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                                "value": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                                             }
                                         }
                                     },
@@ -4071,9 +4071,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -5359,8 +5359,8 @@
                                     }
                                 },
                                 "select": "list",
-                                "updateBy": "data_source",
-                                "data_source": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                "database": "317869cd-9cc1-80f8-bf40-dae0672a5a4a",
+                                "updateBy": "database"
                             },
                             "metadata": {
                                 "designer": {
@@ -5384,22 +5384,23 @@
                                                     }
                                                 },
                                                 "%60nL_": {
-                                                    "mode": "chose"
+                                                    "mode": "chose",
+                                                    "label": "Empty"
                                                 }
                                             }
                                         },
                                         "select": {
                                             "label": "Select from the list"
                                         },
-                                        "updateBy": {
-                                            "mode": "chose",
-                                            "label": "Data SourceThis must be used if your database has multiple data sources."
-                                        },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Dashboard KPIs",
-                                                "value": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                                "value": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                                             }
+                                        },
+                                        "updateBy": {
+                                            "mode": "chose",
+                                            "label": "Database (Legacy)This can be used only if your database has a single data source."
                                         }
                                     },
                                     "parameters": {
@@ -5436,7 +5437,7 @@
                                     {
                                         "name": "select",
                                         "type": "select",
-                                        "label": "Enter a Data Source ID",
+                                        "label": "Enter a Database ID",
                                         "required": true,
                                         "validate": {
                                             "enum": [
@@ -5446,16 +5447,16 @@
                                         }
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data Source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
                                         "mode": "edit",
                                         "name": "page",
                                         "type": "select",
-                                        "label": "Data Source Item ID",
+                                        "label": "Database Item ID",
                                         "required": true
                                     },
                                     {
@@ -6397,8 +6398,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                "select": "item",
+                                "database": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                             },
                             "metadata": {
                                 "designer": {
@@ -6412,12 +6413,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Clients",
-                                                "value": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                                "value": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                                             }
                                         }
                                     },
@@ -6461,9 +6462,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -8413,8 +8414,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                "select": "item",
+                                "database": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                             },
                             "metadata": {
                                 "designer": {
@@ -8428,12 +8429,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Dashboard KPIs",
-                                                "value": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                                "value": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                                             }
                                         }
                                     },
@@ -8477,9 +8478,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -9765,8 +9766,8 @@
                                     }
                                 },
                                 "select": "list",
-                                "updateBy": "data_source",
-                                "data_source": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                "database": "317869cd-9cc1-80f8-bf40-dae0672a5a4a",
+                                "updateBy": "database"
                             },
                             "metadata": {
                                 "designer": {
@@ -9790,22 +9791,23 @@
                                                     }
                                                 },
                                                 "%60nL_": {
-                                                    "mode": "chose"
+                                                    "mode": "chose",
+                                                    "label": "Empty"
                                                 }
                                             }
                                         },
                                         "select": {
                                             "label": "Select from the list"
                                         },
-                                        "updateBy": {
-                                            "mode": "chose",
-                                            "label": "Data SourceThis must be used if your database has multiple data sources."
-                                        },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Dashboard KPIs",
-                                                "value": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                                "value": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                                             }
+                                        },
+                                        "updateBy": {
+                                            "mode": "chose",
+                                            "label": "Database (Legacy)This can be used only if your database has a single data source."
                                         }
                                     },
                                     "parameters": {
@@ -9842,7 +9844,7 @@
                                     {
                                         "name": "select",
                                         "type": "select",
-                                        "label": "Enter a Data Source ID",
+                                        "label": "Enter a Database ID",
                                         "required": true,
                                         "validate": {
                                             "enum": [
@@ -9852,16 +9854,16 @@
                                         }
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data Source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
                                         "mode": "edit",
                                         "name": "page",
                                         "type": "select",
-                                        "label": "Data Source Item ID",
+                                        "label": "Database Item ID",
                                         "required": true
                                     },
                                     {
@@ -10793,8 +10795,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                "select": "item",
+                                "database": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                             },
                             "metadata": {
                                 "designer": {
@@ -10808,12 +10810,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Clients",
-                                                "value": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                                "value": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                                             }
                                         }
                                     },
@@ -10857,9 +10859,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -11349,6 +11351,16 @@
                                     }
                                 ],
                                 "interface": [
+                                    {
+                                        "name": "__IMTLENGTH__",
+                                        "type": "uinteger",
+                                        "label": "Total number of bundles"
+                                    },
+                                    {
+                                        "name": "__IMTINDEX__",
+                                        "type": "uinteger",
+                                        "label": "Bundle order position"
+                                    },
                                     {
                                         "name": "object",
                                         "type": "text",
@@ -12799,8 +12811,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                "select": "item",
+                                "database": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                             },
                             "metadata": {
                                 "designer": {
@@ -12814,12 +12826,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Dashboard KPIs",
-                                                "value": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                                "value": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                                             }
                                         }
                                     },
@@ -12863,9 +12875,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -14151,8 +14163,8 @@
                                     }
                                 },
                                 "select": "list",
-                                "updateBy": "data_source",
-                                "data_source": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                "database": "317869cd-9cc1-80f8-bf40-dae0672a5a4a",
+                                "updateBy": "database"
                             },
                             "metadata": {
                                 "designer": {
@@ -14184,15 +14196,15 @@
                                         "select": {
                                             "label": "Select from the list"
                                         },
-                                        "updateBy": {
-                                            "mode": "chose",
-                                            "label": "Data SourceThis must be used if your database has multiple data sources."
-                                        },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Dashboard KPIs",
-                                                "value": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                                "value": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                                             }
+                                        },
+                                        "updateBy": {
+                                            "mode": "chose",
+                                            "label": "Database (Legacy)This can be used only if your database has a single data source."
                                         }
                                     },
                                     "parameters": {
@@ -14229,7 +14241,7 @@
                                     {
                                         "name": "select",
                                         "type": "select",
-                                        "label": "Enter a Data Source ID",
+                                        "label": "Enter a Database ID",
                                         "required": true,
                                         "validate": {
                                             "enum": [
@@ -14239,16 +14251,16 @@
                                         }
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data Source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
                                         "mode": "edit",
                                         "name": "page",
                                         "type": "select",
-                                        "label": "Data Source Item ID",
+                                        "label": "Database Item ID",
                                         "required": true
                                     },
                                     {
@@ -15185,8 +15197,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                "select": "item",
+                                "database": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                             },
                             "metadata": {
                                 "designer": {
@@ -15200,12 +15212,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Clients",
-                                                "value": "314869cd-9cc1-80e9-a154-000b55d12bb0"
+                                                "value": "314869cd-9cc1-80f8-9bd4-eeda05b64741"
                                             }
                                         }
                                     },
@@ -15249,9 +15261,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -17201,8 +17213,8 @@
                                         }
                                     ]
                                 ],
-                                "select": "data_source_item",
-                                "data_source": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                "select": "item",
+                                "database": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                             },
                             "metadata": {
                                 "designer": {
@@ -17216,12 +17228,12 @@
                                             "mode": "chose"
                                         },
                                         "select": {
-                                            "label": "Data Source ItemsThis must be used if your database has multiple data sources."
+                                            "label": "Database Items (Legacy)This can be used only if your database has a single data source."
                                         },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Dashboard KPIs",
-                                                "value": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                                "value": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                                             }
                                         }
                                     },
@@ -17265,9 +17277,9 @@
                                         "label": "Limit"
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
@@ -17697,16 +17709,6 @@
                                     }
                                 ],
                                 "interface": [
-                                    {
-                                        "name": "__IMTLENGTH__",
-                                        "type": "uinteger",
-                                        "label": "Total number of bundles"
-                                    },
-                                    {
-                                        "name": "__IMTINDEX__",
-                                        "type": "uinteger",
-                                        "label": "Bundle order position"
-                                    },
                                     {
                                         "name": "object",
                                         "type": "text",
@@ -18553,8 +18555,8 @@
                                     }
                                 },
                                 "select": "list",
-                                "updateBy": "data_source",
-                                "data_source": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                "database": "317869cd-9cc1-80f8-bf40-dae0672a5a4a",
+                                "updateBy": "database"
                             },
                             "metadata": {
                                 "designer": {
@@ -18586,15 +18588,15 @@
                                         "select": {
                                             "label": "Select from the list"
                                         },
-                                        "updateBy": {
-                                            "mode": "chose",
-                                            "label": "Data SourceThis must be used if your database has multiple data sources."
-                                        },
-                                        "data_source": {
+                                        "database": {
                                             "rpcSearch": {
                                                 "label": "Dashboard KPIs",
-                                                "value": "317869cd-9cc1-8099-be78-000b5e8d2140"
+                                                "value": "317869cd-9cc1-80f8-bf40-dae0672a5a4a"
                                             }
+                                        },
+                                        "updateBy": {
+                                            "mode": "chose",
+                                            "label": "Database (Legacy)This can be used only if your database has a single data source."
                                         }
                                     },
                                     "parameters": {
@@ -18631,7 +18633,7 @@
                                     {
                                         "name": "select",
                                         "type": "select",
-                                        "label": "Enter a Data Source ID",
+                                        "label": "Enter a Database ID",
                                         "required": true,
                                         "validate": {
                                             "enum": [
@@ -18641,16 +18643,16 @@
                                         }
                                     },
                                     {
-                                        "name": "data_source",
+                                        "name": "database",
                                         "type": "text",
-                                        "label": "Data Source ID",
+                                        "label": "Database ID",
                                         "required": true
                                     },
                                     {
                                         "mode": "edit",
                                         "name": "page",
                                         "type": "select",
-                                        "label": "Data Source Item ID",
+                                        "label": "Database Item ID",
                                         "required": true
                                     },
                                     {
