@@ -108,7 +108,7 @@ function StepHeader({ icon: Icon, title, description }) {
         <Icon className="w-5 h-5 text-blue-600" />
       </div>
       <h2 className="text-xl font-bold text-gray-900">{title}</h2>
-      <p className="text-gray-500 mt-1 text-sm max-w-md mx-auto leading-relaxed">{description}</p>
+      {description && <p className="text-gray-500 mt-1 text-sm max-w-md mx-auto leading-relaxed">{description}</p>}
     </div>
   );
 }
@@ -136,7 +136,7 @@ function StepPrepare({ checks, toggleCheck }) {
       icon: UserPlus,
       title: 'Create a Sandbox Client',
       description: (
-        <>Open the <b>Clients</b> database. Create a new row named <b>&apos;TEST&apos;</b>. Enter an email address <b>different from your Admin Email</b> and set the status to <b>&apos;New&apos;</b>.</>
+        <>Open the <b>Clients</b> database. Create a new row named <b>&apos;TEST&apos;</b>. Enter an email address different from your Admin Email and set the status to <b>&apos;New&apos;</b>.</>
       ),
     },
   ];
@@ -146,7 +146,6 @@ function StepPrepare({ checks, toggleCheck }) {
       <StepHeader
         icon={Copy}
         title="Prepare Your Workspace"
-        description="Let's set up the backbone of your system. You don't need any technical skills — just follow these quick steps."
       />
       <div className="space-y-5">
         {items.map((item, i) => (
@@ -193,12 +192,7 @@ function StepApiKey({ checks, toggleCheck }) {
       title: 'Configure Capabilities',
       description: (
         <>
-          On the success popup, click <b>Configure integration settings</b> and scroll down to <b>Capabilities</b>.
-          <ul className="mt-1.5 ml-4 space-y-0.5 list-disc text-[13px]">
-            <li>Ensure <b>Read</b>, <b>Update</b>, and <b>Insert</b> content are checked.</li>
-            <li>Under User Capabilities, select <b>Read user information including email addresses</b>.</li>
-            <li>Click <b>Save</b>.</li>
-          </ul>
+          On the success popup, click <b>Configure integration settings</b> and scroll down to <b>Capabilities</b>. Ensure <b>Read</b>, <b>Update</b>, and <b>Insert content</b> are checked. Under User Capabilities, select <b>Read user information including email addresses</b>. Click <b>Save</b>.
         </>
       ),
     },
@@ -207,7 +201,7 @@ function StepApiKey({ checks, toggleCheck }) {
       title: 'Copy the Secret Key',
       description: (
         <>
-          Scroll up to the <b>Internal integration secret</b> section. Click <b>Show</b>, and <b>Copy</b> this long password. <em className="text-gray-400">Keep it safe; we will paste it in the next step.</em>
+          Scroll up to the <b>Internal integration secret</b> section. Click <b>Show</b>, and <b>Copy</b> this password.
         </>
       ),
     },
@@ -228,7 +222,6 @@ function StepApiKey({ checks, toggleCheck }) {
       <StepHeader
         icon={KeyRound}
         title="Create Your API Key"
-        description="We need a secure key so your automation engine can read and update your Notion databases."
       />
       <div className="space-y-5">
         {items.map((item, i) => (
@@ -256,7 +249,7 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
       <StepHeader
         icon={Sparkles}
         title="The Magic Engine Generator"
-        description="Paste your Notion Secret Key below. Our system will scan your workspace, map your unique database IDs, and generate a customized automation file just for you."
+        description="Paste your Notion Secret Key below to generate your customized automation files."
       />
 
       <div className="space-y-4 mt-2">
@@ -273,6 +266,9 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
             className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500 transition-all"
           />
         </div>
+        <p className="flex items-center gap-1.5 text-xs text-gray-400">
+          <span>🔒</span> <span><b>Bank-Grade Security:</b> Your key is processed locally in your browser and is NEVER stored on our servers.</span>
+        </p>
 
         {apiState === 'idle' && (
           <motion.button
