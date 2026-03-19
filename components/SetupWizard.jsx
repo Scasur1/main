@@ -346,7 +346,7 @@ function StepSync({ checks, toggleCheck }) {
       title: 'Import the Blueprint',
       description: (
         <>
-          Log into <b>Make.com</b>. On the left purple menu, click <b>Scenarios</b>, then the <b>+ Create a new scenario</b> button. Click the <b>&apos;...&apos;</b> menu in the <b>top right</b>, select <b>Import Blueprint</b>, and upload your downloaded <b>M5.json</b> file.
+          Log into <b>Make.com</b>. Go to <b>Scenarios</b> → <b>+ Create a new scenario</b>. Click the <b>&apos;...&apos;</b> menu (top right) → <b>Import Blueprint</b>, and upload your downloaded <b>M5.json</b> file.
         </>
       ),
     },
@@ -355,7 +355,7 @@ function StepSync({ checks, toggleCheck }) {
       title: 'Connect Your Notion',
       description: (
         <>
-          Click the first black Notion module named <b>&apos;Fetch System Settings&apos;</b>. Click <b>Create a connection</b>. Select <b>Notion Internal</b> as the type, paste your <b>Secret Key</b> from Phase 2, and click <b>Save</b>.
+          Click the first black Notion module (<b>Fetch System Settings</b>). Click <b>Create a connection</b>. Select <b>Notion Internal</b> as the type, paste your <b>Secret Key</b> from Phase 2, and click <b>Save</b>.
         </>
       ),
     },
@@ -364,7 +364,7 @@ function StepSync({ checks, toggleCheck }) {
       title: 'Secure All Modules',
       description: (
         <>
-          Click <b>Save</b> on the module details. Then, open <b>every other black Notion module</b> in the scenario. Under the connection dropdown, simply select the <b>&apos;My Notion Internal&apos;</b> connection you just created and click <b>Save</b>. <em className="text-gray-400">(Note: It may take 1-2 seconds for the module fields to load before the Save button appears. Please wait a moment.)</em>
+          Open <b>every other black Notion module</b> in the scenario. Under the connection dropdown, select the <b>&apos;My Notion Internal&apos;</b> connection you just created and click <b>Save</b>. <em className="text-gray-400">(Note: It may take 1-2 seconds for the module fields to load before the Save button appears. Please wait a moment.)</em>
         </>
       ),
     },
@@ -373,7 +373,7 @@ function StepSync({ checks, toggleCheck }) {
       title: 'Connect Your Gmail',
       description: (
         <>
-          Click the red <b>Gmail</b> module. Click <b>Create a connection</b>, then <b>Sign in with Google</b>. Select your correct email from the pop-up, approve the permissions, and click <b>Save</b> on the module.
+          Click the red <b>Gmail</b> module. Click <b>Create a connection</b> → <b>Sign in with Google</b>. Select your correct email, approve the permissions, and click <b>Save</b>.
         </>
       ),
     },
@@ -384,7 +384,6 @@ function StepSync({ checks, toggleCheck }) {
       <StepHeader
         icon={Rocket}
         title="The 90-Second Sync"
-        description="Your file is perfectly pre-mapped. You do NOT need to manually search for databases. Just import and connect."
       />
       <div className="space-y-5">
         {items.map((item, i) => (
@@ -417,7 +416,7 @@ function StepPreflight({ checks, toggleCheck, allVerified }) {
       icon: Save,
       title: 'Save & Run',
       description: (
-        <>Click the yellow dotted <b>Disk icon</b> at the bottom of Make.com to <b>Save</b>, then click <b>Run Once</b>.</>
+        <>Click the yellow dotted <b>Disk icon</b> at the bottom of Make.com to <b>Save</b>, then click <b>Run once</b>.</>
       ),
     },
     {
@@ -438,7 +437,7 @@ function StepPreflight({ checks, toggleCheck, allVerified }) {
       icon: ShieldCheck,
       title: 'System Log Verified',
       description: (
-        <>Check your Notion <b>&apos;System Logs&apos;</b> (you will find this table towards the middle of your Notion dashboard). Does it say <b>&apos;M5 Success - Ready for Live&apos;</b>?</>
+        <>Check your Notion <b>System Logs</b> database. Does it say <b>&apos;M5 Success - Ready for Live&apos;</b>?</>
       ),
     },
   ];
@@ -448,7 +447,7 @@ function StepPreflight({ checks, toggleCheck, allVerified }) {
       <StepHeader
         icon={ShieldCheck}
         title="Run the Preflight Check"
-        description="You have successfully connected your brain (Notion) to your muscle (Make.com). Time to verify everything works."
+        description="Time to verify everything works."
       />
       <div className="space-y-5">
         {items.map((item, i) => (
