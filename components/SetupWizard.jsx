@@ -327,7 +327,7 @@ function StepEngine({ token, setToken, apiState, onGenerate, onDownload }) {
               className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-md shadow-emerald-500/25 text-sm"
             >
               <Download className="w-4 h-4" />
-              Download Revenue_Recovery_M5.json
+              Download M5.json
             </motion.button>
           </motion.div>
         )}
@@ -499,7 +499,7 @@ function StepDeploy({ checks, toggleCheck, apiResult, allDone }) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Revenue_Recovery_${key}.json`;
+    a.download = `${key}.json`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -681,7 +681,7 @@ export default function SetupWizard() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Revenue_Recovery_M5.json';
+    a.download = 'M5.json';
     a.click();
     URL.revokeObjectURL(url);
     setDownloaded(true);
