@@ -6,7 +6,7 @@ import {
   ArrowRight,
   CheckCheck,
   CheckCircle2,
-  Clock,
+
   CloudDownload,
   Copy,
   Database,
@@ -21,12 +21,12 @@ import {
   Rocket,
   Save,
   Settings,
-  ShieldAlert,
+
   ShieldCheck,
   Sliders,
   Sparkles,
   UserPlus,
-  Zap,
+
 } from 'lucide-react';
 import Confetti from 'react-confetti';
 import ProgressBar from './ProgressBar';
@@ -510,7 +510,7 @@ function StepDeploy({ checks, toggleCheck, apiResult, allDone }) {
       title: 'Download Your Engines',
       description: (
         <>
-          Download your personalized core engine files: <b>M1, M2, M3, M4, and M6</b>.
+          Download your personalized core engine files. You will import these into Make.com during the final Notion checklist.
           <div className="flex flex-wrap gap-2 mt-2">
             {engineFiles.map((key) => (
               <button
@@ -528,46 +528,11 @@ function StepDeploy({ checks, toggleCheck, apiResult, allDone }) {
       ),
     },
     {
-      icon: Zap,
-      title: 'Import & Connect',
-      description: (
-        <>
-          In <b>Make.com</b>, create new scenarios and <b>Import Blueprint</b> for your downloaded files. Since you completed M5, simply select your existing <b>&apos;My Notion Internal&apos;</b> and <b>Gmail</b> connections for each module, and click <b>Save</b>. <em className="text-gray-400">(If you enabled AI, add your OpenAI key).</em>
-        </>
-      ),
-    },
-    {
-      icon: Clock,
-      title: 'Set the Schedules',
-      description: (
-        <>
-          Click the clock icon on the first module of each scenario to set their schedules based on your <b>Local Time Zone</b> to prevent collisions:
-          <ul className="mt-1.5 ml-4 space-y-0.5 list-disc text-[13px]">
-            <li><b>M6:</b> Every day at <b>08:30</b></li>
-            <li><b>M3:</b> Every <b>4 hours</b></li>
-            <li><b>M1:</b> Every <b>15 minutes</b></li>
-            <li><b>M2:</b> Every day at <b>09:15</b></li>
-            <li><b>M4:</b> Every day at <b>09:30</b></li>
-          </ul>
-        </>
-      ),
-      critical: true,
-    },
-    {
-      icon: ShieldAlert,
-      title: 'Save, but KEEP OFF!',
-      description: (
-        <>
-          Click the <b>Disk icon</b> (Save) at the bottom of each scenario, but leave the bottom-left switch <b>OFF</b>. Do not turn them on yet!
-        </>
-      ),
-    },
-    {
       icon: LayoutDashboard,
       title: 'The Final Notion Checklist',
       description: (
         <>
-          Your API setup is complete. Now, return to your Notion workspace. Follow the built-in <b>&apos;Launch Checklist&apos;</b> there to comfortably set your follow-up intervals, write your fallback emails, configure AI settings, and safely activate your engines.
+          Your API setup and Preflight test are complete! Now, return to your <b>Notion workspace</b>. Follow the built-in <b>&apos;Launch Checklist&apos;</b> there to import these files, set your follow-up rules, and safely activate your engines.
         </>
       ),
     },
@@ -577,8 +542,8 @@ function StepDeploy({ checks, toggleCheck, apiResult, allDone }) {
     <div>
       <StepHeader
         icon={Rocket}
-        title="Deploy Core Engines"
-        description="Your infrastructure is healthy. It's time to import your main automation files, set their schedules, and turn the system ON."
+        title="Download Core Engines"
+        description="Your infrastructure is healthy. Download your files and head to your dashboard."
       />
       <div className="space-y-5">
         {items.map((item, i) => (
@@ -634,7 +599,7 @@ export default function SetupWizard() {
   const [downloaded, setDownloaded] = useState(false);
   const [step4Checks, setStep4Checks] = useState([false, false, false, false]);
   const [step5Checks, setStep5Checks] = useState([false, false, false, false]);
-  const [step6Checks, setStep6Checks] = useState([false, false, false, false, false]);
+  const [step6Checks, setStep6Checks] = useState([false, false]);
 
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [showConfetti, setShowConfetti] = useState(false);
