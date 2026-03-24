@@ -387,20 +387,14 @@ function StepSync({ checks, toggleCheck }) {
       />
       <div className="space-y-5">
         {items.map((item, i) => (
-          <div key={i} className="flex gap-3">
-            <div className="flex-1">
-              <ChecklistItem
-                checked={checks[i]}
-                onChange={() => toggleCheck(i)}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-              />
-            </div>
-            <div className="hidden md:flex w-32 h-24 rounded-md bg-gray-100 border border-gray-200 items-center justify-center shrink-0 self-center">
-              <span className="text-xs text-gray-400">GIF</span>
-            </div>
-          </div>
+          <ChecklistItem
+            key={i}
+            checked={checks[i]}
+            onChange={() => toggleCheck(i)}
+            icon={item.icon}
+            title={item.title}
+            description={item.description}
+          />
         ))}
       </div>
     </div>
@@ -450,7 +444,7 @@ function StepPreflight({ checks, toggleCheck, allVerified }) {
         description="Time to verify everything works."
       />
       <div className="mb-5 p-4 bg-amber-50 border border-amber-300 rounded-xl text-sm text-amber-900">
-        <span className="font-semibold">💡 ⚠️ Seeing a &quot;Connection not found&quot; error?</span> Don&apos;t worry, the system is fine! You just need to select your account in the modules. <b>Fix:</b> Click every 🖤 N (Notion) and ❤️ G (Gmail) module in Make.com and select your connection from the dropdown. Then, click <b>Save</b> again.
+        <span className="font-semibold">💡 ⚠️ When you try to save, seeing a &quot;Connection not found&quot; error?</span> Don&apos;t worry, the system is fine! You just need to select your account in the modules. <b>Fix:</b> Click every 🖤 N (Notion) and ❤️ G (Gmail) module in Make.com and select your connection from the dropdown. Then, click <b>Save</b> again.
       </div>
 
       <div className="space-y-5">
