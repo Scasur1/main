@@ -1,5 +1,5 @@
 {
-    "name": "M5 - Preflight Validator - Yeni ",
+    "name": "M5 - Preflight",
     "flow": [
         {
             "id": 1,
@@ -17,7 +17,7 @@
                 "designer": {
                     "x": -196,
                     "y": 0,
-                    "name": "Fetch System Settings"
+                    "name": "N1 - Fetch System Settings"
                 },
                 "restore": {
                     "expect": {
@@ -1929,7 +1929,7 @@
                 "designer": {
                     "x": 196,
                     "y": 0,
-                    "name": "Find KPI Row"
+                    "name": "N2 - Find KPI Row"
                 },
                 "restore": {
                     "expect": {
@@ -3307,9 +3307,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 989,
+                                    "x": 954,
                                     "y": -166,
-                                    "name": "Log Config Error"
+                                    "name": "N3 - Log Config Error"
                                 },
                                 "restore": {
                                     "expect": {
@@ -4656,9 +4656,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 1367,
+                                    "x": 1336,
                                     "y": -166,
-                                    "name": "Update KPI: Config Error"
+                                    "name": "N4 - Update KPI: Config Error"
                                 },
                                 "restore": {
                                     "expect": {
@@ -5702,8 +5702,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 900,
-                                    "y": 147
+                                    "x": 950,
+                                    "y": 153
                                 },
                                 "restore": {
                                     "expect": {
@@ -5793,9 +5793,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 1200,
-                                    "y": 150,
-                                    "name": "Find TEST Client"
+                                    "x": 1315,
+                                    "y": 165,
+                                    "name": "N5 - Find TEST Client"
                                 },
                                 "restore": {
                                     "expect": {
@@ -7765,8 +7765,8 @@
                             "mapper": null,
                             "metadata": {
                                 "designer": {
-                                    "x": 1500,
-                                    "y": 150
+                                    "x": 1730,
+                                    "y": 165
                                 }
                             },
                             "routes": [
@@ -7821,9 +7821,9 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 1966,
-                                                    "y": -100,
-                                                    "name": "Log Sandbox Error"
+                                                    "x": 1721,
+                                                    "y": -164,
+                                                    "name": "N6 - Log Sandbox Error"
                                                 },
                                                 "restore": {
                                                     "expect": {
@@ -9170,9 +9170,9 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2535,
-                                                    "y": -110,
-                                                    "name": "Update KPI: Sandbox Error"
+                                                    "x": 2167,
+                                                    "y": -170,
+                                                    "name": "N7 - Update KPI: Sandbox Error"
                                                 },
                                                 "restore": {
                                                     "expect": {
@@ -10223,8 +10223,9 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 1905,
-                                                    "y": 318
+                                                    "x": 2170,
+                                                    "y": 164,
+                                                    "name": "G1 - Gmail"
                                                 },
                                                 "restore": {
                                                     "expect": {
@@ -10477,9 +10478,9 @@
                                                     },
                                                     "metadata": {
                                                         "designer": {
-                                                            "x": 2337,
-                                                            "y": 625,
-                                                            "name": "Log Gmail Error"
+                                                            "x": 2175,
+                                                            "y": 550,
+                                                            "name": "N8 - Log Gmail Error"
                                                         },
                                                         "restore": {
                                                             "expect": {
@@ -11826,9 +11827,9 @@
                                                     },
                                                     "metadata": {
                                                         "designer": {
-                                                            "x": 2849,
-                                                            "y": 627,
-                                                            "name": "Update KPI: Gmail Error"
+                                                            "x": 2602,
+                                                            "y": 553,
+                                                            "name": "N9 - Update KPI: Gmail Error"
                                                         },
                                                         "restore": {
                                                             "expect": {
@@ -12838,8 +12839,8 @@
                                                     "version": 1,
                                                     "metadata": {
                                                         "designer": {
-                                                            "x": 3294,
-                                                            "y": 637
+                                                            "x": 2976,
+                                                            "y": 551
                                                         }
                                                     }
                                                 }
@@ -12870,9 +12871,9 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2343,
-                                                    "y": 301,
-                                                    "name": "Log SUCCESS"
+                                                    "x": 2578,
+                                                    "y": 164,
+                                                    "name": "N10 - Log SUCCESS"
                                                 },
                                                 "restore": {
                                                     "expect": {
@@ -14219,9 +14220,9 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2849,
-                                                    "y": 302,
-                                                    "name": "Update KPI: Ready"
+                                                    "x": 2970,
+                                                    "y": 168,
+                                                    "name": "N11 - Update KPI: Ready"
                                                 },
                                                 "restore": {
                                                     "expect": {

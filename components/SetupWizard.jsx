@@ -489,7 +489,7 @@ function StepPreflight({ checks, toggleCheck, allVerified }) {
 // Step 6: Deploy Core Engines
 // ---------------------------------------------------------------------------
 function StepDeploy({ checks, toggleCheck, apiResult, allDone }) {
-  const engineFiles = ['M1', 'M2', 'M3', 'M4', 'M6'];
+  const engineFiles = ['M0', 'M1', 'M2', 'M3', 'M4', 'M6'];
 
   const handleDownloadEngine = (key) => {
     if (!apiResult?.blueprints?.[key]) return;
@@ -662,7 +662,7 @@ export default function SetupWizard() {
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ notionToken: token, selectedBlueprints: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'] }),
+        body: JSON.stringify({ notionToken: token, selectedBlueprints: ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6'] }),
       });
       if (!res.ok) { setApiState('error'); return; }
       const data = await res.json();

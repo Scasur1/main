@@ -1,5 +1,5 @@
 {
-    "name": "M3 - Reply Detector - Yeni ",
+    "name": "M3 - Reply Detector",
     "flow": [
         {
             "id": 1,
@@ -16,9 +16,9 @@
             "mapper": {},
             "metadata": {
                 "designer": {
-                    "x": 497,
+                    "x": 404,
                     "y": 2,
-                    "name": "Watch Inbox"
+                    "name": "G1 - Watch Inbox"
                 },
                 "restore": {
                     "parameters": {
@@ -373,9 +373,9 @@
             },
             "metadata": {
                 "designer": {
-                    "x": 900,
-                    "y": 0,
-                    "name": "Find Client (Thread ID)"
+                    "x": 897,
+                    "y": 4,
+                    "name": "N1 - Find Client (Thread ID)"
                 },
                 "restore": {
                     "expect": {
@@ -2360,8 +2360,9 @@
                     },
                     "metadata": {
                         "designer": {
-                            "x": 841,
-                            "y": 412
+                            "x": 903,
+                            "y": 424,
+                            "name": "G2 - Mail"
                         },
                         "restore": {
                             "expect": {
@@ -2612,8 +2613,8 @@
             "mapper": null,
             "metadata": {
                 "designer": {
-                    "x": 1200,
-                    "y": -150
+                    "x": 1366,
+                    "y": 4
                 }
             },
             "routes": [
@@ -2674,9 +2675,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 1612,
-                                    "y": -198,
-                                    "name": "Set Status: Paused (Bounce)"
+                                    "x": 1364,
+                                    "y": -389,
+                                    "name": "N2 - Set Status: Paused (Bounce)"
                                 },
                                 "restore": {
                                     "expect": {
@@ -4453,9 +4454,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 2065,
-                                    "y": -249,
-                                    "name": "Log: Bounced"
+                                    "x": 1822,
+                                    "y": -388,
+                                    "name": "N3 - Log: Bounced"
                                 },
                                 "restore": {
                                     "expect": {
@@ -5799,9 +5800,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 1403,
-                                    "y": 160,
-                                    "name": "Get System Settings"
+                                    "x": 1363,
+                                    "y": 442,
+                                    "name": "N4 - Get System Settings"
                                 },
                                 "restore": {
                                     "expect": {
@@ -7704,8 +7705,8 @@
                             "mapper": null,
                             "metadata": {
                                 "designer": {
-                                    "x": 1796,
-                                    "y": 168
+                                    "x": 1778,
+                                    "y": 13
                                 }
                             },
                             "routes": [
@@ -7743,8 +7744,8 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2106,
-                                                    "y": 151,
+                                                    "x": 2159,
+                                                    "y": 15,
                                                     "name": "Load Config to RAM"
                                                 },
                                                 "restore": {
@@ -7848,9 +7849,9 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2492,
-                                                    "y": 170,
-                                                    "name": "Intent Router"
+                                                    "x": 2662,
+                                                    "y": 8,
+                                                    "name": "A1 - Intent Router"
                                                 },
                                                 "restore": {
                                                     "expect": {
@@ -8626,9 +8627,9 @@
                                                     },
                                                     "metadata": {
                                                         "designer": {
-                                                            "x": 2158,
-                                                            "y": 531,
-                                                            "name": "Set Status: Setup Issue (AI Error)"
+                                                            "x": 2663,
+                                                            "y": 427,
+                                                            "name": "N6 - Status: Setup Issue"
                                                         },
                                                         "restore": {
                                                             "expect": {
@@ -10406,9 +10407,9 @@
                                                     },
                                                     "metadata": {
                                                         "designer": {
-                                                            "x": 2361,
-                                                            "y": 850,
-                                                            "name": "Log: OpenAI Error"
+                                                            "x": 2667,
+                                                            "y": 842,
+                                                            "name": "N7 - Log: OpenAI Error"
                                                         },
                                                         "restore": {
                                                             "expect": {
@@ -11740,8 +11741,8 @@
                                                     "version": 1,
                                                     "metadata": {
                                                         "designer": {
-                                                            "x": 2746,
-                                                            "y": 874
+                                                            "x": 3164,
+                                                            "y": 832
                                                         }
                                                     }
                                                 }
@@ -11757,8 +11758,8 @@
                                             "mapper": null,
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 2776,
-                                                    "y": 154
+                                                    "x": 3471,
+                                                    "y": -5
                                                 }
                                             },
                                             "routes": [
@@ -11805,9 +11806,9 @@
                                                             },
                                                             "metadata": {
                                                                 "designer": {
-                                                                    "x": 3201,
-                                                                    "y": -182,
-                                                                    "name": "Set Status: Active (OOO)"
+                                                                    "x": 3466,
+                                                                    "y": -430,
+                                                                    "name": "N8 - Set Status: Active (OOO)"
                                                                 },
                                                                 "restore": {
                                                                     "expect": {
@@ -13584,9 +13585,9 @@
                                                             },
                                                             "metadata": {
                                                                 "designer": {
-                                                                    "x": 3888,
-                                                                    "y": -188,
-                                                                    "name": "Log: OOO"
+                                                                    "x": 3987,
+                                                                    "y": -434,
+                                                                    "name": "N11 - Log: OOO"
                                                                 },
                                                                 "restore": {
                                                                     "expect": {
@@ -14958,9 +14959,9 @@
                                                             },
                                                             "metadata": {
                                                                 "designer": {
-                                                                    "x": 3201,
-                                                                    "y": 185,
-                                                                    "name": "Set Status: Closed (Opt-Out)"
+                                                                    "x": 3988,
+                                                                    "y": -7,
+                                                                    "name": "N12 - Set Status: Closed (Opt-Out)"
                                                                 },
                                                                 "restore": {
                                                                     "expect": {
@@ -16737,9 +16738,9 @@
                                                             },
                                                             "metadata": {
                                                                 "designer": {
-                                                                    "x": 3911,
-                                                                    "y": 185,
-                                                                    "name": "Log: Opt-Out"
+                                                                    "x": 4501,
+                                                                    "y": -7,
+                                                                    "name": "N15 - Log: Opt-Out"
                                                                 },
                                                                 "restore": {
                                                                     "expect": {
@@ -18119,9 +18120,9 @@
                                                             },
                                                             "metadata": {
                                                                 "designer": {
-                                                                    "x": 3201,
-                                                                    "y": 497,
-                                                                    "name": "Set Status: Reply Received"
+                                                                    "x": 4027,
+                                                                    "y": 413,
+                                                                    "name": "N13 - Set Status: Reply Received"
                                                                 },
                                                                 "restore": {
                                                                     "expect": {
@@ -19894,8 +19895,8 @@
                                                                     },
                                                                     "metadata": {
                                                                         "designer": {
-                                                                            "x": 3941,
-                                                                            "y": 686,
+                                                                            "x": 4028,
+                                                                            "y": 840,
                                                                             "name": "Sent Error Email"
                                                                         },
                                                                         "restore": {
@@ -20138,9 +20139,9 @@
                                                             },
                                                             "metadata": {
                                                                 "designer": {
-                                                                    "x": 4250,
-                                                                    "y": 487,
-                                                                    "name": "Log: Reply Received"
+                                                                    "x": 4502,
+                                                                    "y": 403,
+                                                                    "name": "N14 - Log: Reply Received"
                                                                 },
                                                                 "restore": {
                                                                     "expect": {
@@ -21498,9 +21499,9 @@
                                                             },
                                                             "metadata": {
                                                                 "designer": {
-                                                                    "x": 3345,
-                                                                    "y": 991,
-                                                                    "name": "Set Status: Needs Review (Unknown)"
+                                                                    "x": 3472,
+                                                                    "y": 412,
+                                                                    "name": "N9 - Set Status: Needs Review (Unknown)"
                                                                 },
                                                                 "restore": {
                                                                     "expect": {
@@ -23277,9 +23278,9 @@
                                                             },
                                                             "metadata": {
                                                                 "designer": {
-                                                                    "x": 3993,
-                                                                    "y": 1005,
-                                                                    "name": "Log: Unknown Intent"
+                                                                    "x": 3475,
+                                                                    "y": 839,
+                                                                    "name": "N10 - Log: Unknown Intent"
                                                                 },
                                                                 "restore": {
                                                                     "expect": {
@@ -24654,9 +24655,9 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 1382,
-                                                    "y": 723,
-                                                    "name": "M3 Error - Config Multiple Rows"
+                                                    "x": 1777,
+                                                    "y": 445,
+                                                    "name": "N5 - Log: Config Multiple Rows"
                                                 },
                                                 "restore": {
                                                     "expect": {
@@ -25998,9 +25999,9 @@
                                             },
                                             "metadata": {
                                                 "designer": {
-                                                    "x": 1754,
-                                                    "y": 734,
-                                                    "name": "Send Error"
+                                                    "x": 1783,
+                                                    "y": 859,
+                                                    "name": "G3 - Send Error"
                                                 },
                                                 "restore": {
                                                     "expect": {
