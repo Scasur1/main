@@ -509,15 +509,15 @@ function StepDeploy({ checks, toggleCheck, apiResult, allDone }) {
       description: (
         <>
           Download your personalized core engine files. You will import these into Make.com during the final Notion checklist.
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="flex flex-wrap gap-1.5 mt-2">
             {engineFiles.map((key) => (
               <button
                 key={key}
                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDownloadEngine(key); }}
                 disabled={!apiResult?.blueprints?.[key]}
-                className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold rounded-full border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-semibold rounded-full border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
-                <Download className="w-3 h-3" />
+                <Download className="w-2.5 h-2.5" />
                 {key}.json
               </button>
             ))}
