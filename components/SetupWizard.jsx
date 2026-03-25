@@ -346,7 +346,7 @@ function StepSync({ checks, toggleCheck }) {
       title: 'Import the Blueprint',
       description: (
         <>
-          Log into <b>Make.com</b>. Go to <b>Scenarios</b> → <b>+ Create a new scenario</b>. Click the <b>&apos;...&apos;</b> menu (top right) → <b>Import Blueprint</b>, and upload your downloaded <b>M5.json</b> file.
+          Log into <b>Make.com</b>. Go to <b>Scenarios</b> → click the <b>+ Create Scenario</b> button. Click the <b>&apos;...&apos;</b> menu (top right) → <b>Import Blueprint</b>, and upload your downloaded <b>M5.json</b> file.
         </>
       ),
     },
@@ -364,7 +364,7 @@ function StepSync({ checks, toggleCheck }) {
       title: 'Secure All Modules',
       description: (
         <>
-          Open <b>every other black Notion module</b> in the scenario. Under the connection dropdown, select the <b>&apos;My Notion Internal&apos;</b> connection you just created and click <b>Save</b>. <em className="text-gray-400">(Note: It may take 1-2 seconds for the module fields to load before the Save button appears. Please wait a moment.)</em>
+          Open <b>every other black Notion module</b> in the scenario. Under the connection dropdown, select the <b>&apos;My Notion Internal&apos;</b> connection you just created. <em className="text-gray-400">(Note: It may take 1-2 seconds for the module fields to load before the Save button appears. Please wait a moment.)</em>
         </>
       ),
     },
@@ -373,7 +373,7 @@ function StepSync({ checks, toggleCheck }) {
       title: 'Connect Your Gmail',
       description: (
         <>
-          Click the red <b>Gmail</b> module. Click <b>Create a connection</b> → <b>Sign in with Google</b>. Select your correct email, approve the permissions, and click <b>Save</b>.
+          Click the red <b>Gmail</b> module. Click <b>Create a connection</b> → <b>Sign in with Google</b>. Select your correct email, approve the permissions.
         </>
       ),
     },
@@ -387,20 +387,14 @@ function StepSync({ checks, toggleCheck }) {
       />
       <div className="space-y-5">
         {items.map((item, i) => (
-          <div key={i} className="flex gap-3">
-            <div className="flex-1">
-              <ChecklistItem
-                checked={checks[i]}
-                onChange={() => toggleCheck(i)}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-              />
-            </div>
-            <div className="hidden md:flex w-32 h-24 rounded-md bg-gray-100 border border-gray-200 items-center justify-center shrink-0 self-center">
-              <span className="text-xs text-gray-400">GIF</span>
-            </div>
-          </div>
+          <ChecklistItem
+            key={i}
+            checked={checks[i]}
+            onChange={() => toggleCheck(i)}
+            icon={item.icon}
+            title={item.title}
+            description={item.description}
+          />
         ))}
       </div>
     </div>
@@ -449,6 +443,10 @@ function StepPreflight({ checks, toggleCheck, allVerified }) {
         title="Run the Preflight Check"
         description="Time to verify everything works."
       />
+      <div className="mb-5 p-4 bg-amber-50 border border-amber-300 rounded-xl text-sm text-amber-900">
+        <span className="font-semibold">💡 ⚠️ When you try to save, seeing a &quot;Connection not found&quot; error?</span> Don&apos;t worry, the system is fine! You just need to select your account in the modules. <b>Fix:</b> Click every 🖤 N (Notion) and ❤️ G (Gmail) module in Make.com and select your connection from the dropdown. Then, click <b>Save</b> again.
+      </div>
+
       <div className="space-y-5">
         {items.map((item, i) => (
           <ChecklistItem
