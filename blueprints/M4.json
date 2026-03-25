@@ -1,5 +1,5 @@
 {
-    "name": "M4 - Daily Digest Engine - Yeni",
+    "name": "M4 - Daily Digest",
     "flow": [
         {
             "id": 12,
@@ -15,9 +15,9 @@
             },
             "metadata": {
                 "designer": {
-                    "x": -905,
-                    "y": -9,
-                    "name": "Fetch System Settings"
+                    "x": -1248,
+                    "y": -17,
+                    "name": "N1 - Fetch System Settings"
                 },
                 "restore": {
                     "expect": {
@@ -1950,9 +1950,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": -245,
-                                    "y": -663,
-                                    "name": "Find Today's Drafts"
+                                    "x": -264,
+                                    "y": -661,
+                                    "name": "N2 - Find Today's Drafts"
                                 },
                                 "restore": {
                                     "expect": {
@@ -3927,8 +3927,9 @@
                                     },
                                     "metadata": {
                                         "designer": {
-                                            "x": -545,
-                                            "y": -893
+                                            "x": -653,
+                                            "y": -667,
+                                            "name": "G1 - Gmail"
                                         },
                                         "restore": {
                                             "expect": {
@@ -4151,8 +4152,8 @@
                                             "version": 1,
                                             "metadata": {
                                                 "designer": {
-                                                    "x": -798,
-                                                    "y": -1056
+                                                    "x": -1196,
+                                                    "y": -674
                                                 }
                                             }
                                         }
@@ -4173,8 +4174,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 117,
-                                    "y": -667,
+                                    "x": 75,
+                                    "y": -654,
                                     "name": "Count Drafts"
                                 },
                                 "restore": {
@@ -4227,8 +4228,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 474,
-                                    "y": -676,
+                                    "x": 467,
+                                    "y": -666,
                                     "name": "Set DraftCount"
                                 },
                                 "restore": {
@@ -4309,9 +4310,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": -268,
-                                    "y": -349,
-                                    "name": "Find Reply Logs"
+                                    "x": -261,
+                                    "y": -348,
+                                    "name": "N3 - Find Reply Logs"
                                 },
                                 "restore": {
                                     "expect": {
@@ -5870,8 +5871,9 @@
                                     },
                                     "metadata": {
                                         "designer": {
-                                            "x": -632,
-                                            "y": -474
+                                            "x": -654,
+                                            "y": -347,
+                                            "name": "G2 - Gmail"
                                         },
                                         "restore": {
                                             "expect": {
@@ -6092,8 +6094,8 @@
                                             "version": 1,
                                             "metadata": {
                                                 "designer": {
-                                                    "x": -949,
-                                                    "y": -685
+                                                    "x": -1216,
+                                                    "y": -351
                                                 }
                                             }
                                         }
@@ -6254,9 +6256,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": -285,
-                                    "y": -16,
-                                    "name": "Find Reply Logs"
+                                    "x": -258,
+                                    "y": -20,
+                                    "name": "N4 - Find Reply Logs"
                                 },
                                 "restore": {
                                     "expect": {
@@ -7815,8 +7817,9 @@
                                     },
                                     "metadata": {
                                         "designer": {
-                                            "x": -783,
-                                            "y": 362
+                                            "x": -661,
+                                            "y": 357,
+                                            "name": "G3 - Gmail"
                                         },
                                         "restore": {
                                             "expect": {
@@ -8039,8 +8042,8 @@
                                             "version": 1,
                                             "metadata": {
                                                 "designer": {
-                                                    "x": -1082,
-                                                    "y": 585
+                                                    "x": -1255,
+                                                    "y": 368
                                                 }
                                             }
                                         }
@@ -8061,8 +8064,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 33,
-                                    "y": -20,
+                                    "x": 80,
+                                    "y": -16,
                                     "name": "Count Replies"
                                 },
                                 "restore": {
@@ -8201,9 +8204,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": -247,
-                                    "y": 350,
-                                    "name": "Find Action Needed"
+                                    "x": -252,
+                                    "y": 314,
+                                    "name": "N5 - Find Action Needed"
                                 },
                                 "restore": {
                                     "expect": {
@@ -8752,6 +8755,16 @@
                                     }
                                 ],
                                 "interface": [
+                                    {
+                                        "name": "__IMTLENGTH__",
+                                        "type": "uinteger",
+                                        "label": "Total number of bundles"
+                                    },
+                                    {
+                                        "name": "__IMTINDEX__",
+                                        "type": "uinteger",
+                                        "label": "Bundle order position"
+                                    },
                                     {
                                         "name": "object",
                                         "type": "text",
@@ -10178,8 +10191,9 @@
                                     },
                                     "metadata": {
                                         "designer": {
-                                            "x": -651,
-                                            "y": 668
+                                            "x": -666,
+                                            "y": 703,
+                                            "name": "G4 - Gmail"
                                         },
                                         "restore": {
                                             "expect": {
@@ -10402,8 +10416,8 @@
                                             "version": 1,
                                             "metadata": {
                                                 "designer": {
-                                                    "x": -944,
-                                                    "y": 944
+                                                    "x": -1223,
+                                                    "y": 690
                                                 }
                                             }
                                         }
@@ -10424,8 +10438,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 53,
-                                    "y": 350,
+                                    "x": 78,
+                                    "y": 301,
                                     "name": "Count Errors"
                                 },
                                 "restore": {
@@ -10478,8 +10492,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 452,
-                                    "y": 357,
+                                    "x": 449,
+                                    "y": 309,
                                     "name": "Set ErrorCount"
                                 },
                                 "restore": {
@@ -10542,8 +10556,8 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": -252,
-                                    "y": 776,
+                                    "x": -244,
+                                    "y": 670,
                                     "name": "Get All Variables"
                                 },
                                 "restore": {
@@ -10643,9 +10657,9 @@
                             },
                             "metadata": {
                                 "designer": {
-                                    "x": 169,
-                                    "y": 784,
-                                    "name": "Send Daily Digest"
+                                    "x": 107,
+                                    "y": 666,
+                                    "name": "G5 - Send Daily Digest"
                                 },
                                 "restore": {
                                     "expect": {
@@ -10886,9 +10900,9 @@
                                     },
                                     "metadata": {
                                         "designer": {
-                                            "x": 654,
-                                            "y": 780,
-                                            "name": "Log G-Mail Problem"
+                                            "x": 453,
+                                            "y": 658,
+                                            "name": "N6 - Log G-Mail Problem"
                                         },
                                         "restore": {
                                             "expect": {
