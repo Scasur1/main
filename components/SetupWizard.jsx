@@ -188,11 +188,25 @@ function StepApiKey({ checks, toggleCheck }) {
       ),
     },
     {
+      icon: Link2,
+      title: 'Authorize the Template',
+      description: (
+        <>
+          Click the <b>Content access</b> tab at the top. Click the <b>Edit access</b> button, search for your <b>&apos;Client Follow-up Hub&apos;</b> page, select it, and click <b>Save</b>.{' '}
+          <span className="italic text-gray-500">(This clears the yellow &apos;No page access&apos; warning!)</span>
+        </>
+      ),
+      critical: true,
+    },
+    {
       icon: Sliders,
       title: 'Configure Capabilities',
       description: (
         <>
-          On the success popup, click <b>Configure integration settings</b> and scroll down to <b>Capabilities</b>. Ensure <b>Read</b>, <b>Update</b>, and <b>Insert content</b> are checked. Under User Capabilities, select <b>Read user information including email addresses</b>. Click <b>Save</b>.
+          Click back to the <b>Configuration</b> tab and scroll down to <b>Capabilities</b>. Ensure <b>Read</b>, <b>Update</b>, and <b>Insert content</b> are checked. Under User Capabilities, select <b>Read user information including email addresses</b>, then click <b>Save</b> at the bottom.
+          <span className="block mt-1.5 text-[11px] text-gray-400 leading-snug">
+            💡 <b>Quick Fix:</b> If Notion&apos;s Save button is bugged/greyed out, briefly select &apos;without email addresses&apos;, click Save, then switch back to &apos;including email addresses&apos; and Save again.
+          </span>
         </>
       ),
     },
@@ -204,16 +218,6 @@ function StepApiKey({ checks, toggleCheck }) {
           Scroll up to the <b>Internal integration secret</b> section. Click <b>Show</b>, and <b>Copy</b> this password.
         </>
       ),
-    },
-    {
-      icon: Link2,
-      title: 'Authorize the Template',
-      description: (
-        <>
-          Go back to your <b>Notion Dashboard</b>. Click the <b>&apos;...&apos;</b> menu in the top right → <b>Connections</b> → <b>Add connection</b>. Search for <b>&apos;Revenue Recovery Engine&apos;</b> and click <b>Confirm</b>.
-        </>
-      ),
-      critical: true,
     },
   ];
 
